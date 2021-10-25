@@ -1,0 +1,41 @@
+{
+  "url": "https://api.github.com/repos/awslabs/aws-crt-python/releases/51466470",
+  "assets_url": "https://api.github.com/repos/awslabs/aws-crt-python/releases/51466470/assets",
+  "upload_url": "https://uploads.github.com/repos/awslabs/aws-crt-python/releases/51466470/assets{?name,label}",
+  "html_url": "https://github.com/awslabs/aws-crt-python/releases/tag/v0.12.6",
+  "id": 51466470,
+  "author": {
+    "login": "justinboswell",
+    "id": 3382222,
+    "node_id": "MDQ6VXNlcjMzODIyMjI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/3382222?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/justinboswell",
+    "html_url": "https://github.com/justinboswell",
+    "followers_url": "https://api.github.com/users/justinboswell/followers",
+    "following_url": "https://api.github.com/users/justinboswell/following{/other_user}",
+    "gists_url": "https://api.github.com/users/justinboswell/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/justinboswell/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/justinboswell/subscriptions",
+    "organizations_url": "https://api.github.com/users/justinboswell/orgs",
+    "repos_url": "https://api.github.com/users/justinboswell/repos",
+    "events_url": "https://api.github.com/users/justinboswell/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/justinboswell/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "node_id": "RE_kwDOCRkgSc4DEVDm",
+  "tag_name": "v0.12.6",
+  "target_commitish": "main",
+  "name": "Updated core libraries, removed OOM conditionals",
+  "draft": false,
+  "prerelease": false,
+  "created_at": "2021-10-16T03:34:31Z",
+  "published_at": "2021-10-16T03:35:15Z",
+  "assets": [
+
+  ],
+  "tarball_url": "https://api.github.com/repos/awslabs/aws-crt-python/tarball/v0.12.6",
+  "zipball_url": "https://api.github.com/repos/awslabs/aws-crt-python/zipball/v0.12.6",
+  "body": ""
+}
