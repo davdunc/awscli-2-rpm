@@ -49,9 +49,10 @@ install -Dpm0644 bin/aws_bash_completer \
   %{buildroot}%{_datadir}/bash-completion/completions/aws
 install -Dpm0644 bin/aws_zsh_completer.sh \
   %{buildroot}%{_datadir}/zsh/site-functions/_awscli
+install -Dpm0644 doc/* %{buildroot}%{_datadir}/
 
 %files
-%doc %{appname}-%{version}/doc/README.rst
+%doc %{name}/doc/README.rst
 %license %{name}/LICENSE.txt
 %{_bindir}/aws
 %{_bindir}/aws_completer
