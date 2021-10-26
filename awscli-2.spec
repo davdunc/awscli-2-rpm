@@ -30,7 +30,7 @@ This package provides version 2 of the unified command line
 interface to Amazon Web Services.
 
 %prep
-%autosetup -n %{appname}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %if %{with examples}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
@@ -39,7 +39,7 @@ rm -vr awscli/examples
 %endif
 
 %build
-cd %{appname}-%{version}
+cd %{srcname}-%{version}
 %py3_build
 
 %install
