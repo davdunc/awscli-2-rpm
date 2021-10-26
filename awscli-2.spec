@@ -43,7 +43,6 @@ rm -vr awscli/examples
 %py3_build
 
 %install
-cd %{name}
 %py3_install
 rm -vf %{buildroot}%{_bindir}/{aws_bash_completer,aws_zsh_completer.sh,aws.cmd}
 install -Dpm0644 bin/aws_bash_completer \
@@ -52,7 +51,7 @@ install -Dpm0644 bin/aws_zsh_completer.sh \
   %{buildroot}%{_datadir}/zsh/site-functions/_awscli
 
 %files
-%doc %{name}/README.rst
+%doc %{appname}-%{version}/doc/README.rst
 %license %{name}/LICENSE.txt
 %{_bindir}/aws
 %{_bindir}/aws_completer
