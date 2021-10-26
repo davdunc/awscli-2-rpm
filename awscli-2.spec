@@ -1,14 +1,15 @@
 %global srcname aws-cli
+%global appname awscli
 %bcond_with examples
 
-Name:           %{srcname}-2
+Name:           %{appname}-2
 Version:        2.3.0
 Release:        2%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/aws-cli
-Source0:        %{url}/archive/v2/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v2/%{version}/%{appname}-%{version}.tar.gz
 
 BuildArch:      noarch
 # The botocore library is no longer separate from the awscli
@@ -19,7 +20,8 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Recommends:     groff
 Obsoletes:      awscli <= 1
-Obsoletes:      python3-botocore
+Obsoletes:      python3-botocore <= 1
+
 %{?python_provide:%python_provide python3-%{name}}
 
 %description
@@ -28,8 +30,8 @@ This package provides version 2 of the unified command line
 interface to Amazon Web Services.
 
 %prep
-%autosetup -c -n %{name}-%{version}
-cd %{name}
+%autosetup -n %{appname}-%{version}
+
 %if %{with examples}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 %else
@@ -37,7 +39,7 @@ rm -vr awscli/examples
 %endif
 
 %build
-cd %{name}
+cd %{appname}-%{version}
 %py3_build
 
 %install
