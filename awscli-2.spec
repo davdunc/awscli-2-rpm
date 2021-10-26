@@ -39,7 +39,7 @@ rm -vr awscli/examples
 %endif
 
 %build
-cd %{srcname}-%{version}
+# cd %{srcname}-%{version}
 %py3_build
 
 %install
