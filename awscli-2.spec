@@ -65,7 +65,7 @@ rm -vr awscli/examples
 # install -Dpm0644 doc/README.rst %{buildroot}%{_datadir}/doc
 
 
-%files -n python3-requests -f %{pyproject_files}
+%files -n %{srcname}-%{version} -f %{pyproject_files}
 %doc %{name}/doc/README.rst
 %license %{name}/LICENSE.txt
 %{_bindir}/aws
