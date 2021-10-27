@@ -19,8 +19,13 @@ BuildRequires:  python3-setuptools
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-toml
 
+
+Requires:       python3-prompt-toolkit
+Requires:       python3-colorama
 Requires:       python3-cryptography
 Requires:       python3-s3transfer
+Provides:       bundled(python3-awscrt) == 0.12.6
+
 Recommends:     groff
 Obsoletes:      awscli <= 1
 Obsoletes:      python3-botocore <= 1
@@ -32,6 +37,8 @@ Obsoletes:      python3-botocore <= 1
 This package provides version 2 of the unified command line
 interface to Amazon Web Services.
 
+%pyproject_extras_subpkg
+
 %prep
 %autosetup -n %{srcname}-%{version}
 
@@ -42,7 +49,7 @@ rm -vr awscli/examples
 %endif
 
 %generate_buildrequires
-%pyproject_buildrequires
+%pyproject_buildrequires -r requirements.txt
 
 %build
 %pyproject_wheel
@@ -50,14 +57,15 @@ rm -vr awscli/examples
 
 %install
 %pyproject_install
-rm -vf %{buildroot}%{_bindir}/{aws_bash_completer,aws_zsh_completer.sh,aws.cmd}
-install -Dpm0644 bin/aws_bash_completer \
-  %{buildroot}%{_datadir}/bash-completion/completions/aws
-install -Dpm0644 bin/aws_zsh_completer.sh \
-  %{buildroot}%{_datadir}/zsh/site-functions/_awscli
-install -Dpm0644 doc/README.rst %{buildroot}%{_datadir}/doc
+# rm -vf %{buildroot}%{_bindir}/{aws_bash_completer,aws_zsh_completer.sh,aws.cmd}
+# install -Dpm0644 bin/aws_bash_completer \
+#   %{buildroot}%{_datadir}/bash-completion/completions/aws
+# install -Dpm0644 bin/aws_zsh_completer.sh \
+#   %{buildroot}%{_datadir}/zsh/site-functions/_awscli
+# install -Dpm0644 doc/README.rst %{buildroot}%{_datadir}/doc
 
-%files
+
+%files -n python3-requests -f %{pyproject_files}
 %doc %{name}/doc/README.rst
 %license %{name}/LICENSE.txt
 %{_bindir}/aws
@@ -67,7 +75,7 @@ install -Dpm0644 doc/README.rst %{buildroot}%{_datadir}/doc
 %{python3_sitelib}/awscli-%{version}-*.egg-info/
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/aws
+%{_datadir}/bash-completion/completions/aws 
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_awscli
