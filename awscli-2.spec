@@ -1,8 +1,11 @@
 %global srcname aws-cli
 %global appname awscli
-%global awscrt_version 0.12.4
 %bcond_with examples
 
+# python3-aws-crt-python
+%global awscrt_version 0.12.4
+%global bundled_lib_dir bundled
+%global awscrt_dir ${bundled_lib_dir}/awscrt
 Name:           %{appname}-2
 Version:        2.3.0
 Release:        2%{?dist}
@@ -42,11 +45,12 @@ interface to Amazon Web Services.
 
 %prep
 %autosetup -n %{srcname}-%{version}
-%setup -q -T -c -n awscrt-crt-python-${awscrt_version}
+%setup -q -T -b1 -c -n awscrt-crt-python-${awscrt_version}
+
 %if %{with examples}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 %else
-rm -vr awscli/examples
+rm -r awscli/examples
 %endif
 
 %generate_buildrequires
