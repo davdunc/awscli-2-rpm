@@ -14,10 +14,13 @@ Source0:        %{url}/archive/v2/%{version}/%{appname}-%{version}.tar.gz
 BuildArch:      noarch
 # The botocore library is no longer separate from the awscli
 # Requires:       python3-botocore-2
-Requires:       python3-cryptography
-Requires:       python3-s3transfer
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-toml
+
+Requires:       python3-cryptography
+Requires:       python3-s3transfer
 Recommends:     groff
 Obsoletes:      awscli <= 1
 Obsoletes:      python3-botocore <= 1
@@ -38,18 +41,21 @@ find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 rm -vr awscli/examples
 %endif
 
+%generate_buildrequires
+%pyproject_buildrequires
+
 %build
-# cd %{srcname}-%{version}
-%py3_build
+%pyproject_wheel
+
 
 %install
-%py3_install
+%pyproject_install
 rm -vf %{buildroot}%{_bindir}/{aws_bash_completer,aws_zsh_completer.sh,aws.cmd}
 install -Dpm0644 bin/aws_bash_completer \
   %{buildroot}%{_datadir}/bash-completion/completions/aws
 install -Dpm0644 bin/aws_zsh_completer.sh \
   %{buildroot}%{_datadir}/zsh/site-functions/_awscli
-install -Dpm0644 doc/* %{buildroot}%{_datadir}/
+install -Dpm0644 doc/README.rst %{buildroot}%{_datadir}/doc
 
 %files
 %doc %{name}/doc/README.rst
