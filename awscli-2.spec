@@ -14,6 +14,7 @@ Summary:        Universal Command Line Environment for AWS, Version 2
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/aws-cli
 Source0:        %{url}/archive/v2/%{version}/%{appname}-%{version}.tar.gz
+Source1:        aws-crt-python-%{awscrt_version}.tar.gz
 
 BuildArch:      noarch
 # The botocore library is no longer separate from the awscli
