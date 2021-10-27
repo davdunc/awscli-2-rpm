@@ -6,6 +6,7 @@
 %global awscrt_version 0.12.4
 %global bundled_lib_dir bundled
 %global awscrt_dir ${bundled_lib_dir}/awscrt
+
 Name:           %{appname}-2
 Version:        2.3.0
 Release:        2%{?dist}
