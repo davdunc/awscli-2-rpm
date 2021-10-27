@@ -1,5 +1,6 @@
 %global srcname aws-cli
 %global appname awscli
+%global awscrt_version 0.12.4
 %bcond_with examples
 
 Name:           %{appname}-2
@@ -41,7 +42,7 @@ interface to Amazon Web Services.
 
 %prep
 %autosetup -n %{srcname}-%{version}
-
+%setup -q -T -c -n awscrt-crt-python-${awscrt_version}
 %if %{with examples}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 %else
