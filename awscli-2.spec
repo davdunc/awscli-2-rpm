@@ -16,8 +16,7 @@ Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/aws-cli
-Source0:        %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
-Spirce0:        %{url}/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Source1:        https://github.com/awslabs/%{awscrt_repo_name}/%{awscrt_version}.tar.gz#/%{awscrt_srcname}-%{awscrt_version}.tar.gz
 
 BuildArch:      noarch
