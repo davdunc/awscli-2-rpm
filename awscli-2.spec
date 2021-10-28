@@ -1,21 +1,24 @@
 %global srcname aws-cli
 %global appname awscli
+
 %bcond_with examples
 
 # python3-aws-crt-python
 %global awscrt_version 0.12.4
+%global awscrt_repo_name aws-crt-python
 %global bundled_lib_dir bundled
 %global awscrt_dir ${bundled_lib_dir}/awscrt
 
 Name:           %{appname}-2
 Version:        2.3.0
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/aws-cli
-Source0:        %{url}/archive/v2/%{version}/%{appname}-%{version}.tar.gz
-Source1:        aws-crt-python-%{awscrt_version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
+Spirce0:        %{url}/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
+Source1:        https://github.com/awslabs/%{awscrt_repo_name}/%{awscrt_version}.tar.gz#/%{awscrt_srcname}-%{awscrt_version}.tar.gz
 
 BuildArch:      noarch
 # The botocore library is no longer separate from the awscli
@@ -30,7 +33,7 @@ Requires:       python3-prompt-toolkit
 Requires:       python3-colorama
 Requires:       python3-cryptography
 Requires:       python3-s3transfer
-Provides:       bundled(python3-awscrt) == 0.12.6
+Provides:       bundled(python3-awscrt) == %{version}
 
 Recommends:     groff
 Obsoletes:      awscli <= 1
@@ -43,11 +46,12 @@ Obsoletes:      python3-botocore <= 1
 This package provides version 2 of the unified command line
 interface to Amazon Web Services.
 
-%pyproject_extras_subpkg
+%pyproject_extras_subpkg -n %{srcname}-%{version}
 
 %prep
+# extract the crt first
+%setup -T -b1 -c -n awscrt-crt-python-${awscrt_version}
 %autosetup -n %{srcname}-%{version}
-%setup -q -T -b1 -c -n awscrt-crt-python-${awscrt_version}
 
 %if %{with examples}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
