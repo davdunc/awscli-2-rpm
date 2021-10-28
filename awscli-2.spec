@@ -6,6 +6,7 @@
 # python3-aws-crt-python
 %global awscrt_version 0.12.4
 %global awscrt_repo_name aws-crt-python
+%global awscrt_name awscrt
 %global bundled_lib_dir bundled
 %global awscrt_dir ${bundled_lib_dir}/awscrt
 
@@ -17,7 +18,7 @@ Summary:        Universal Command Line Environment for AWS, Version 2
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/aws-cli
 Source0:        %{url}/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-Source1:        https://github.com/awslabs/%{awscrt_repo_name}/%{awscrt_version}.tar.gz#/%{awscrt_srcname}-%{awscrt_version}.tar.gz
+Source1:        https://github.com/awslabs/%{awscrt_repo_name}/%{awscrt_version}.tar.gz#/%{awscrt_name}-%{awscrt_version}.tar.gz
 
 BuildArch:      noarch
 # The botocore library is no longer separate from the awscli
