@@ -45,7 +45,7 @@ Obsoletes:      python3-botocore <= 1
 This package provides version 2 of the unified command line
 interface to Amazon Web Services.
 
-%pyproject_extras_subpkg -n %{srcname}-%{version}
+#%#pyproject_extras_subpkg -n %{srcname}-%{version}
 
 %prep
 # extract the crt first
