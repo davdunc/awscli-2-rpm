@@ -7,6 +7,7 @@ License:        ASL-2.0
 URL:            https://github.com/davdunc/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires: gcc
 BuildRequires: cmake
 BuildRequires: openssl-devel
 BuildRequires: ninja-build
@@ -21,14 +22,16 @@ designed to be simple, small, fast, and with security as a priority.
 
 
 %build
-%cmake
+%cmake -DUNSAFE_TREAT_WARNINGS_AS_ERRORS=OFF -DBUILD_SHARED_LIBS=ON
 %cmake_build
 
 %install
 %cmake_install
-
+rm -rf %{buildroot}%{_libdir}/s2n
 
 %files
+%{_includedir}/s2n.h
+%{_libdir}/libs2n.so
 %license LICENSE
 %doc VERSIONING.rst NOTICE README.md
 %doc docs/READING-LIST.md docs/USAGE-GUIDE.md
