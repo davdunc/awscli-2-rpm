@@ -1,0 +1,20 @@
+* AWSCLI Build Process
+** Fedora 35 Build Issues
+There is a significant number of issues related to the 11.5 GCC and
+actually 9.5 as well. The cMake must be directed to ignore errors.
+
+* Infrastructure build
+This is a simple way to make the instances for building the
+rpms. 
+#+begin_src shell
+  cd ./ansible
+  make deploy
+#+end_src
+To remover the documents 
+#+begin_src shell
+make clean
+#+end_src
+
+;; Local Variables:
+;; eval: (setq org-src-preserve-indentation nil)
+;; End:
