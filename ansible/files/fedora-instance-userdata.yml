@@ -12,14 +12,17 @@ users:
 package_update: true
 packages:
   - jq
-  - wget
-  - git
-  - libguestfs-bash-completion
-  - libguestfs-tools-c
-  - rpm-build
-  - git-credential-libsecret
-  - unzip
-  
+  - centos-packager
+  - fedora-packager
+  - fedora-packager-kerberos
+  - fedora-packager-yubikey
+  - openssl-devel
+  - openssl-libs
+  - openssl
+  - cmake
+  - ninja-build
+  - fbrnch
+
 runcmd:
   - ['git', 'config', '--global', 'credential.helper', 'store']
   - ['git', 'config', '--global', 'user.name', 'David Duncan']
@@ -28,9 +31,14 @@ runcmd:
 
 write_files:
 - encoding: b64
-  content: W2RlZmF1bHRdCnJlZ2lvbiA9IHVzLXdlc3QtMgpvdXRwdXQgPSBqc29uCg==
+  content: W2RlZmF1bHRdCnJlZ2lvbiA9IHVzLWVhc3QtMQpvdXRwdXQgPSBqc29u
   owner: builder:builder
   path: ${HOME}/.aws/config
   permissions: '0600'
+- encoding: b64
+  content: ZGF2ZHVuYw==
+  owner: builder:builder
+  path: ${HOME}/.fedora.upn
+  permissions: 760
 
 final_message: Completed configuration for basic userdata file.
