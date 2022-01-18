@@ -3,6 +3,12 @@
 There is a significant number of issues related to the 11.5 GCC and
 actually 9.5 as well. The cMake must be directed to ignore errors.
 
+** CentOS Stream 8 Build Issues
+[TBD]
+
+** CentOS Stream 9 Build Issues
+[TBD]
+
 * Infrastructure build
 This is a simple way to make the instances for building the
 rpms. 
