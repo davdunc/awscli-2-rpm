@@ -2,6 +2,7 @@ Name:           aws-c-common
 Version:        0.6.14 
 Release:        1%{?dist}
 Summary:        Core c99 package for AWS SDK for C
+Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -11,6 +12,24 @@ BuildRequires:  gcc
 BuildRequires:  cmake
 
 %description
+Core c99 package for AWS SDK for C. Includes cross-platform primitives,
+configuration, data structures, and error handling.
+
+
+%package libs
+Summary:        Core c99 package for AWS SDK for C
+Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+
+%description libs
+Core c99 package for AWS SDK for C. Includes cross-platform primitives,
+configuration, data structures, and error handling.
+
+
+%package devel
+Summary:        Core c99 package for AWS SDK for C
+Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+
+%description devel
 Core c99 package for AWS SDK for C. Includes cross-platform primitives,
 configuration, data structures, and error handling.
 
@@ -31,6 +50,12 @@ configuration, data structures, and error handling.
 %license LICENSE
 %doc README.md
 
+%files libs
+%{_libdir}/libaws-c-common.so
+%{_libdir}/libaws-c-common.so.1
+%{_libdir}/libaws-c-common.so.1.0.0
+
+%files devel
 %{_includedir}/aws/common/*.h
 %{_includedir}/aws/common/*.inl
 %{_includedir}/aws/common/posix/common.inl
@@ -48,10 +73,6 @@ configuration, data structures, and error handling.
 %{_libdir}/cmake/AwsSanitizers.cmake
 %{_libdir}/cmake/AwsSharedLibSetup.cmake
 %{_libdir}/cmake/AwsTestHarness.cmake
-
-%{_libdir}/libaws-c-common.so
-%{_libdir}/libaws-c-common.so.1
-%{_libdir}/libaws-c-common.so.1.0.0
 
 
 %changelog
