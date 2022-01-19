@@ -27,7 +27,7 @@ designed to be simple, small, fast, and with security as a priority.
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_libdir}/s2n
+## rm -rf %{buildroot}%{_libdir}/s2n
 
 %files
 %{_includedir}/s2n.h
