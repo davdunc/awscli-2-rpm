@@ -10,9 +10,9 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  cmake
-BuildRequires:  aws-c-common-devel
+BuildRequires:  aws-c-common-devel = 1:0.6.14
 
-Requires:       aws-c-common-libs
+Requires:       aws-c-common-libs = 1:0.6.14
 
 %description
 Utility package for AWS SDK for C
