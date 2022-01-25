@@ -1,0 +1,81 @@
+Name:           aws-c-mqtt
+Version:        0.7.8
+Release:        1%{?dist}
+Summary:        C99 implementation of the MQTT 3.1.1 specification
+Epoch:          1
+
+License:        ASL-2.0
+URL:            https://github.com/awslabs/%{name}
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+
+BuildRequires:  gcc
+BuildRequires:  cmake
+BuildRequires:  openssl-devel
+BuildRequires:  aws-c-common-devel = 1:0.6.14
+BuildRequires:  aws-c-cal-devel = 1:0.5.12
+BuildRequires:  aws-c-io-devel = 1:0.10.12
+BuildRequires:  aws-c-compression-devel = 1:0.2.14
+BuildRequires:  aws-c-http-devel = 1:0.6.8
+
+Requires:       openssl-devel
+Requires:       aws-c-common-libs = 1:0.6.14
+Requires:       aws-c-cal-libs = 1:0.5.12
+Requires:       aws-c-io-libs = 1:0.10.12
+Requires:       aws-c-compression-libs = 1:0.2.14
+Requires:       aws-c-http-libs = 1:0.6.8
+
+%description
+C99 implementation of the MQTT 3.1.1 specification
+
+
+%package libs
+Summary:        C99 implementation of the MQTT 3.1.1 specification
+Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+
+%description libs
+C99 implementation of the MQTT 3.1.1 specification
+
+
+%package devel
+Summary:        C99 implementation of the MQTT 3.1.1 specification
+Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+
+%description devel
+C99 implementation of the MQTT 3.1.1 specification
+
+
+%prep
+%autosetup
+
+
+%build
+%cmake -DBUILD_SHARED_LIBS=ON
+%cmake_build
+
+%install
+%cmake_install
+
+
+%files
+%license LICENSE
+%doc README.md
+
+%{_bindir}/elastipubsub
+
+%files libs
+%{_libdir}/libaws-c-mqtt.so
+%{_libdir}/libaws-c-mqtt.so.1.0.0
+
+%files devel
+%{_includedir}/aws/mqtt/*.h
+%{_includedir}/aws/mqtt/private/mqtt_client_test_helper.h
+
+%{_libdir}/aws-c-mqtt/cmake/aws-c-mqtt-config.cmake
+%{_libdir}/aws-c-mqtt/cmake/shared/aws-c-mqtt-targets-noconfig.cmake
+%{_libdir}/aws-c-mqtt/cmake/shared/aws-c-mqtt-targets.cmake
+
+
+
+%changelog
+* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
+- 
