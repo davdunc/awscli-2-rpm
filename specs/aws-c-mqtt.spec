@@ -1,12 +1,13 @@
 Name:           aws-c-mqtt
 Version:        0.7.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C99 implementation of the MQTT 3.1.1 specification
 Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-mqtt-reconnect-api.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -45,7 +46,7 @@ C99 implementation of the MQTT 3.1.1 specification
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -77,5 +78,8 @@ C99 implementation of the MQTT 3.1.1 specification
 
 
 %changelog
+* Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 1:0.7.8-2
+- Add patch to make missing API accessible when a shared library
+
 * Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
 - 
