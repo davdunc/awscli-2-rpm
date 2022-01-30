@@ -62,6 +62,9 @@ rm -r awscli/examples
 
 
 %changelog
+* Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 2.4.12-1
+- Update to 2.4.12 and switch to using pyproject macros
+
 * Fri Mar 13 2020 David Duncan <davdunc@amazon.com> - 2.0.3-2
 - Modify python3-botocore dependency to python3-botocore-2
 
