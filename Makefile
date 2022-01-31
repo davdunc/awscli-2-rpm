@@ -15,4 +15,4 @@ build:
 install:
         rpm -ql ../rpmbuild/RPMS/${ARCH}/s2n-tls-debugsource-1.3.2-1.fc35
 	rpm -ql ../rpmbuild/RPMS/${ARCH}/s2n-tls-1.3.2-1.fc35.x86_64.rpm
-	
+
