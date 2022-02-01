@@ -10,20 +10,20 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
-BuildRequires:  aws-c-common-devel = 1:0.6.14
-BuildRequires:  aws-c-sdkutils-devel = 1:0.1.1
-BuildRequires:  aws-c-cal-devel = 1:0.5.12
-BuildRequires:  aws-c-io-devel = 1:0.10.12
-BuildRequires:  aws-c-compression-devel = 1:0.2.14
-BuildRequires:  aws-c-http-devel = 1:0.6.8
+BuildRequires:  aws-c-common-devel = 0.6.14
+BuildRequires:  aws-c-sdkutils-devel = 0.1.1
+BuildRequires:  aws-c-cal-devel = 0.5.12
+BuildRequires:  aws-c-io-devel = 0.10.12
+BuildRequires:  aws-c-compression-devel = 0.2.14
+BuildRequires:  aws-c-http-devel = 0.6.8
 
 Requires:       openssl
-Requires:       aws-c-common-libs = 1:0.6.14
-Requires:       aws-c-sdkutils-libs = 1:0.1.1
-Requires:       aws-c-cal-libs = 1:0.5.12
-Requires:       aws-c-io-libs = 1:0.10.12
-Requires:       aws-c-compression-libs = 1:0.2.14
-Requires:       aws-c-http-libs = 1:0.6.8
+Requires:       aws-c-common-libs = 0.6.14
+Requires:       aws-c-sdkutils-libs = 0.1.1
+Requires:       aws-c-cal-libs = 0.5.12
+Requires:       aws-c-io-libs = 0.10.12
+Requires:       aws-c-compression-libs = 0.2.14
+Requires:       aws-c-http-libs = 0.6.8
 
 %description
 C99 library implementation of AWS client-side authentication:
