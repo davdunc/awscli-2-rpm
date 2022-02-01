@@ -2,7 +2,6 @@ Name:           aws-checksums
 Version:        0.1.12 
 Release:        1%{?dist}
 Summary:        Checksum package for AWS SDK for C
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -22,7 +21,7 @@ fallback to efficient SW implementations.
 
 %package libs
 Summary:        Checksum package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 	
 %description libs
 Checksum package for AWS SDK for C. Contains
@@ -32,7 +31,7 @@ fallback to efficient SW implementations.
 
 %package devel
 Summary:        Checksum package for AWS SDK for C
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 Checksum package for AWS SDK for C. Contains

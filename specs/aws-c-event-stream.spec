@@ -2,7 +2,6 @@ Name:           aws-c-event-stream
 Version:        0.2.7 
 Release:        1%{?dist}
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -24,7 +23,7 @@ C99 implementation of the vnd.amazon.eventstream content-type
 
 %package libs
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 implementation of the vnd.amazon.eventstream content-type
@@ -32,7 +31,7 @@ C99 implementation of the vnd.amazon.eventstream content-type
 
 %package devel
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 C99 implementation of the vnd.amazon.eventstream content-type

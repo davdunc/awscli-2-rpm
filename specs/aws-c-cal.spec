@@ -2,7 +2,6 @@ Name:           aws-c-cal
 Version:        0.5.12 
 Release:        1%{?dist}
 Summary:        AWS Crypto Abstraction Layer
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -23,7 +22,7 @@ cryptography primitives
 
 %package libs
 Summary:        AWS Crypto Abstraction Layer
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 	
 %description libs
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for
@@ -32,7 +31,7 @@ cryptography primitives
 
 %package devel
 Summary:        AWS Crypto Abstraction Layer
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for

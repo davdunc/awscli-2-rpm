@@ -2,7 +2,6 @@ Name:           aws-c-sdkutils
 Version:        0.1.1 
 Release:        1%{?dist}
 Summary:        Utility package for AWS SDK for C
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -20,7 +19,7 @@ Utility package for AWS SDK for C
 
 %package libs
 Summary:        Utility package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 	
 %description libs
 Utility package for AWS SDK for C
@@ -28,7 +27,7 @@ Utility package for AWS SDK for C
 
 %package devel
 Summary:        Utility package for AWS SDK for C
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 Utility package for AWS SDK for C

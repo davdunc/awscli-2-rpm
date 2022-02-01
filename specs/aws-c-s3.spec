@@ -2,7 +2,6 @@ Name:           aws-c-s3
 Version:        0.1.27
 Release:        1%{?dist}
 Summary:        C99 library implementation for communicating with the S3 service
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -32,7 +31,7 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 
 %package libs
 Summary:        C99 library implementation for communicating with the S3 service
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 library implementation for communicating with the S3 service,
@@ -41,7 +40,7 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 
 %package devel
 Summary:        C99 library implementation for communicating with the S3 service
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 C99 library implementation for communicating with the S3 service,
