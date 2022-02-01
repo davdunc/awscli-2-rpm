@@ -11,18 +11,18 @@ Patch0:         aws-c-mqtt-reconnect-api.patch
 BuildRequires:  gcc
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
-BuildRequires:  aws-c-common-devel = 1:0.6.14
-BuildRequires:  aws-c-cal-devel = 1:0.5.12
-BuildRequires:  aws-c-io-devel = 1:0.10.12
-BuildRequires:  aws-c-compression-devel = 1:0.2.14
-BuildRequires:  aws-c-http-devel = 1:0.6.8
+BuildRequires:  aws-c-common-devel = 0.6.14
+BuildRequires:  aws-c-cal-devel = 0.5.12
+BuildRequires:  aws-c-io-devel = 0.10.12
+BuildRequires:  aws-c-compression-devel = 0.2.14
+BuildRequires:  aws-c-http-devel = 0.6.8
 
 Requires:       openssl-devel
-Requires:       aws-c-common-libs = 1:0.6.14
-Requires:       aws-c-cal-libs = 1:0.5.12
-Requires:       aws-c-io-libs = 1:0.10.12
-Requires:       aws-c-compression-libs = 1:0.2.14
-Requires:       aws-c-http-libs = 1:0.6.8
+Requires:       aws-c-common-libs = 0.6.14
+Requires:       aws-c-cal-libs = 0.5.12
+Requires:       aws-c-io-libs = 0.10.12
+Requires:       aws-c-compression-libs = 0.2.14
+Requires:       aws-c-http-libs = 0.6.8
 
 %description
 C99 implementation of the MQTT 3.1.1 specification
@@ -77,7 +77,7 @@ C99 implementation of the MQTT 3.1.1 specification
 
 
 %changelog
-* Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 1:0.7.8-2
+* Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-2
 - Add patch to make missing API accessible when a shared library
 
 * Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>

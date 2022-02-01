@@ -9,13 +9,13 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  cmake
-BuildRequires:  aws-c-common-devel = 1:0.6.14
-BuildRequires:  aws-c-compression-devel = 1:0.2.14
-BuildRequires:  aws-c-io-devel = 1:0.10.12
+BuildRequires:  aws-c-common-devel = 0.6.14
+BuildRequires:  aws-c-compression-devel = 0.2.14
+BuildRequires:  aws-c-io-devel = 0.10.12
 
-Requires:       aws-c-common-libs = 1:0.6.14
-Requires:       aws-c-compression-libs = 1:0.2.14
-Requires:       aws-c-io-libs = 1:0.10.12
+Requires:       aws-c-common-libs = 0.6.14
+Requires:       aws-c-compression-libs = 0.2.14
+Requires:       aws-c-io-libs = 0.10.12
 
 %description
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications

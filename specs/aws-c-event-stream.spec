@@ -9,13 +9,13 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  cmake
-BuildRequires:  aws-c-common-devel = 1:0.6.14
-BuildRequires:  aws-checksums-devel = 1:0.1.12
-BuildRequires:  aws-c-io-devel = 1:0.10.12
+BuildRequires:  aws-c-common-devel = 0.6.14
+BuildRequires:  aws-checksums-devel = 0.1.12
+BuildRequires:  aws-c-io-devel = 0.10.12
 
-Requires:       aws-c-common-libs = 1:0.6.14
-Requires:       aws-checksums-libs = 1:0.1.12
-Requires:       aws-c-io-libs = 1:0.10.12
+Requires:       aws-c-common-libs = 0.6.14
+Requires:       aws-checksums-libs = 0.1.12
+Requires:       aws-c-io-libs = 0.10.12
 
 %description
 C99 implementation of the vnd.amazon.eventstream content-type
