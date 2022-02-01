@@ -2,7 +2,6 @@ Name:           aws-c-http
 Version:        0.6.8 
 Release:        1%{?dist}
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -24,7 +23,7 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 
 %package libs
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications
@@ -32,7 +31,7 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 
 %package devel
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications

@@ -2,7 +2,6 @@ Name:           aws-c-io
 Version:        0.10.12 
 Release:        1%{?dist}
 Summary:        IO package for AWS SDK for C
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -25,7 +24,7 @@ for application protocols.
 
 %package libs
 Summary:        IO package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 	
 %description libs
 IO package for AWS SDK for C. It handles all IO and TLS work
@@ -34,7 +33,7 @@ for application protocols.
 
 %package devel
 Summary:        IO package for AWS SDK for C
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 Requires:       s2n-tls-devel
 Requires:       aws-c-cal-devel = 1:0.5.12
 

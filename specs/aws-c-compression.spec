@@ -2,7 +2,6 @@ Name:           aws-c-compression
 Version:        0.2.14
 Release:        1%{?dist}
 Summary:        Compression package for AWS SDK for C
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -21,7 +20,7 @@ compression algorithms such as gzip, and huffman encoding/decoding.
 
 %package libs
 Summary:        Compression package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 	
 %description libs
 This is a cross-platform C99 implementation of
@@ -30,7 +29,7 @@ compression algorithms such as gzip, and huffman encoding/decoding.
 
 %package devel
 Summary:        Compression package for AWS SDK for C
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 This is a cross-platform C99 implementation of

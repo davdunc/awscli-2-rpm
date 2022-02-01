@@ -2,7 +2,6 @@ Name:           aws-c-mqtt
 Version:        0.7.8
 Release:        2%{?dist}
 Summary:        C99 implementation of the MQTT 3.1.1 specification
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -31,7 +30,7 @@ C99 implementation of the MQTT 3.1.1 specification
 
 %package libs
 Summary:        C99 implementation of the MQTT 3.1.1 specification
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 implementation of the MQTT 3.1.1 specification
@@ -39,7 +38,7 @@ C99 implementation of the MQTT 3.1.1 specification
 
 %package devel
 Summary:        C99 implementation of the MQTT 3.1.1 specification
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 C99 implementation of the MQTT 3.1.1 specification

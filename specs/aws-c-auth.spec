@@ -2,7 +2,6 @@ Name:           aws-c-auth
 Version:        0.6.5 
 Release:        1%{?dist}
 Summary:        C99 library implementation of AWS client-side authentication
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -33,7 +32,7 @@ standard credentials providers and signing
 
 %package libs
 Summary:        C99 library implementation of AWS client-side authentication
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 library implementation of AWS client-side authentication:
@@ -42,7 +41,7 @@ standard credentials providers and signing
 
 %package devel
 Summary:        C99 library implementation of AWS client-side authentication
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 C99 library implementation of AWS client-side authentication:

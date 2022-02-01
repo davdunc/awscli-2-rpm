@@ -1,7 +1,6 @@
 Name:           s2n-tls
 Version:        1.3.2
 Release:        1%{?dist}
-Epoch:          1
 Summary:        s2n: an implementation of the TLS/SSL protocols utilities
 
 License:        ASL-2.0
@@ -20,7 +19,7 @@ designed to be simple, small, fast, and with security as a priority.
 
 %package libs
 Summary: s2n: an implementation of the TLS/SSL protocols libraries
-Requires:      %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:      %{name}%{?_isa} = %{version}-%{release}
 
 %description libs 
 s2n-tls is a C99 implementation of the TLS/SSL protocols that is
@@ -28,7 +27,7 @@ designed to be simple, small, fast, and with security as a priority.
 
 %package devel
 Summary: s2n: an implementation of the TLS/SSL protocols headers and source files.
-Requires:      %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:      %{name}-libs%{?_isa} = %{version}-%{release}
 Requires:      openssl-devel
 
 %description devel

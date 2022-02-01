@@ -2,7 +2,6 @@ Name:           aws-c-common
 Version:        0.6.14 
 Release:        1%{?dist}
 Summary:        Core c99 package for AWS SDK for C
-Epoch:          1
 
 License:        ASL-2.0
 URL:            https://github.com/awslabs/%{name}
@@ -18,7 +17,7 @@ configuration, data structures, and error handling.
 
 %package libs
 Summary:        Core c99 package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 Core c99 package for AWS SDK for C. Includes cross-platform primitives,
@@ -27,7 +26,7 @@ configuration, data structures, and error handling.
 
 %package devel
 Summary:        Core c99 package for AWS SDK for C
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 Core c99 package for AWS SDK for C. Includes cross-platform primitives,
