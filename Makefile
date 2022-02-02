@@ -68,6 +68,7 @@ aws-c-mqtt:
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
 	@pushd $(BUILD_DIR)rpmbuild/SOURCES
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	if [[ -f sources/$@*.patch ]] ; then cp sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/ ; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
 	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
@@ -76,6 +77,7 @@ aws-c-auth:
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
 	@pushd $(BUILD_DIR)rpmbuild/SOURCES
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	if [[ -f sources/$@*.patch ]] ; then cp sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/ ; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
 	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
@@ -84,6 +86,7 @@ aws-checksums:
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
 	@pushd $(BUILD_DIR)rpmbuild/SOURCES
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	if [[ -f sources/$@*.patch ]] ; then cp sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/ ; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
 	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
@@ -92,6 +95,7 @@ aws-c-compression:
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
 	@pushd $(BUILD_DIR)rpmbuild/SOURCES
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	if [[ -f sources/$@*.patch ]] ; then cp sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/ ; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
 	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
@@ -100,6 +104,7 @@ aws-c-http:
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
 	@pushd $(BUILD_DIR)rpmbuild/SOURCES
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	if [[ -f sources/$@*.patch ]] ; then cp sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/ ; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
 	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
