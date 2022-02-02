@@ -1,6 +1,6 @@
 Name:           aws-c-s3
 Version:        0.1.27
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C99 library implementation for communicating with the S3 service
 
 License:        ASL 2.0
@@ -78,5 +78,8 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 
 
 %changelog
-* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
-- 
+* Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.1.27-2
+- Prepare for package review
+
+* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.27-1
+- Initial package development

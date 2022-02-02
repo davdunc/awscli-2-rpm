@@ -1,6 +1,6 @@
 Name:           aws-c-mqtt
 Version:        0.7.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        C99 implementation of the MQTT 3.1.1 specification
 
 License:        ASL 2.0
@@ -77,8 +77,11 @@ C99 implementation of the MQTT 3.1.1 specification
 
 
 %changelog
+* Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.7.8-3
+- Prepare for package review
+
 * Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-2
 - Add patch to make missing API accessible when a shared library
 
-* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
-- 
+* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-1
+- Initial package development
