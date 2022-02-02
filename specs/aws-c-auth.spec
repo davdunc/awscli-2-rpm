@@ -60,20 +60,17 @@ standard credentials providers and signing
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
-%files libs
-%{_libdir}/libaws-c-auth.so
 %{_libdir}/libaws-c-auth.so.1.0.0
 
 %files devel
 %{_includedir}/aws/auth/*.h
-
-%{_libdir}/aws-c-auth/cmake/aws-c-auth-config.cmake
-%{_libdir}/aws-c-auth/cmake/shared/aws-c-auth-targets-noconfig.cmake
-%{_libdir}/aws-c-auth/cmake/shared/aws-c-auth-targets.cmake
+%{_libdir}/libaws-c-auth.so
+%{_libdir}/cmake/aws-c-auth/aws-c-auth-config.cmake
+%{_libdir}/cmake/aws-c-auth/shared/aws-c-auth-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-auth/shared/aws-c-auth-targets.cmake
 
 
 
