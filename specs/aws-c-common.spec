@@ -1,11 +1,12 @@
 Name:           aws-c-common
 Version:        0.6.14 
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Core c99 package for AWS SDK for C
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-common-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -17,7 +18,6 @@ configuration, data structures, and error handling.
 
 %package libs
 Summary:        Core c99 package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 Core c99 package for AWS SDK for C. Includes cross-platform primitives,
@@ -34,7 +34,7 @@ configuration, data structures, and error handling.
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -45,14 +45,10 @@ configuration, data structures, and error handling.
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
-%files libs
-%{_libdir}/libaws-c-common.so
-%{_libdir}/libaws-c-common.so.1
-%{_libdir}/libaws-c-common.so.1.0.0
+%{_libdir}/libaws-c-common.so.1{,.*}
 
 %files devel
 %{_includedir}/aws/common/*.h
@@ -60,9 +56,10 @@ configuration, data structures, and error handling.
 %{_includedir}/aws/common/posix/common.inl
 %{_includedir}/aws/testing/aws_test_harness.h
 
-%{_libdir}/aws-c-common/cmake/aws-c-common-config.cmake
-%{_libdir}/aws-c-common/cmake/shared/aws-c-common-targets-noconfig.cmake
-%{_libdir}/aws-c-common/cmake/shared/aws-c-common-targets.cmake
+%{_libdir}/libaws-c-common.so
+%{_libdir}/cmake/aws-c-common/aws-c-common-config.cmake
+%{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets.cmake
 %{_libdir}/cmake/AwsCFlags.cmake
 %{_libdir}/cmake/AwsCheckHeaders.cmake
 %{_libdir}/cmake/AwsFeatureTests.cmake
@@ -75,6 +72,9 @@ configuration, data structures, and error handling.
 
 
 %changelog
+* Wed Feb 02 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.14-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.6.14-2
 - Prepare for package review
 
