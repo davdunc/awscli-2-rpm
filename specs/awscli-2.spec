@@ -5,7 +5,7 @@
 
 Name:           %{appname}-2
 Version:        2.4.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
@@ -62,6 +62,9 @@ rm -r awscli/examples
 
 
 %changelog
+* Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 2.4.12-2
+- Prepare for package review
+
 * Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 2.4.12-1
 - Update to 2.4.12 and switch to using pyproject macros
 

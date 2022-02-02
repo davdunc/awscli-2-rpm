@@ -1,6 +1,6 @@
 Name:           aws-c-auth
 Version:        0.6.5 
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C99 library implementation of AWS client-side authentication
 
 License:        ASL-2.0
@@ -78,5 +78,8 @@ standard credentials providers and signing
 
 
 %changelog
-* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
-- 
+* Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.6.5-2
+- Prepare for package review
+
+* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.5.1
+- Initial package development

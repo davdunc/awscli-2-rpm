@@ -1,6 +1,6 @@
 Name:           aws-c-http
 Version:        0.6.8 
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 
 License:        ASL-2.0
@@ -68,5 +68,8 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 
 
 %changelog
-* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
-- 
+* Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.6.8-2
+- Prepare for package review
+
+* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.8-1
+- Initial package development
