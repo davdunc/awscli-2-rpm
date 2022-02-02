@@ -3,7 +3,7 @@ Version:        0.6.14
 Release:        1%{?dist}
 Summary:        Core c99 package for AWS SDK for C
 
-License:        ASL-2.0
+License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 

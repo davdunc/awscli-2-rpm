@@ -3,7 +3,7 @@ Version:        0.5.12
 Release:        1%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
-License:        ASL-2.0
+License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 

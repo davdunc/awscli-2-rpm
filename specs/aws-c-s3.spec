@@ -3,7 +3,7 @@ Version:        0.1.27
 Release:        1%{?dist}
 Summary:        C99 library implementation for communicating with the S3 service
 
-License:        ASL-2.0
+License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
