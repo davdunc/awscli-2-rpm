@@ -3,7 +3,7 @@ Version:        1.3.2
 Release:        1%{?dist}
 Summary:        s2n: an implementation of the TLS/SSL protocols utilities
 
-License:        ASL-2.0
+License:        ASL 2.0
 URL:            https://github.com/davdunc/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 

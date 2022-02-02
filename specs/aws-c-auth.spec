@@ -3,7 +3,7 @@ Version:        0.6.5
 Release:        1%{?dist}
 Summary:        C99 library implementation of AWS client-side authentication
 
-License:        ASL-2.0
+License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
