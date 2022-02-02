@@ -67,5 +67,5 @@ security as a priority.
 
 
 %changelog
-* Sat Dec 18 2021 David Duncan <<davdunc@amazon.com>>
+* Sat Dec 18 2021 David Duncan <davdunc@amazon.com> - 1.3.2-1
 - Initial Package Review release
