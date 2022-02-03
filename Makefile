@@ -10,8 +10,8 @@ SRPMS_DIR := $(BUILD_DIR)SRPMS/
 rpmbuild := rpmbuild --define "_topdir  $(abspath $(BUILD_DIR)rpmbuild)"
 
 ARCH := $(shell arch)
-SRCS := aws-c-common aws-c-cal s2n-tls aws-c-io aws-checksums	\
-aws-c-compression aws-c-http aws-c-mqtt aws-c-sdkutils		\
+SRCS := aws-c-common aws-c-cal aws-c-io aws-checksums	\
+aws-c-compression aws-c-http aws-c-mqtt aws-c-sdkutils	\
 aws-c-event-stream python-awscrt s2n-tls
 setup:
 	@git pull
