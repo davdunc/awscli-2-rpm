@@ -1,11 +1,12 @@
 Name:           aws-c-sdkutils
 Version:        0.1.1 
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Utility package for AWS SDK for C
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-sdkutils-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -19,8 +20,7 @@ Utility package for AWS SDK for C
 
 %package libs
 Summary:        Utility package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-	
+
 %description libs
 Utility package for AWS SDK for C
 
@@ -34,7 +34,7 @@ Utility package for AWS SDK for C
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -45,23 +45,25 @@ Utility package for AWS SDK for C
 %cmake_install
 
 
-%files
-%license LICENSE
-%doc README.md
 
 %files libs
-%{_libdir}/libaws-c-sdkutils.so
+%license LICENSE
+%doc README.md
 %{_libdir}/libaws-c-sdkutils.so.1.0.0
 
 %files devel
 %{_includedir}/aws/sdkutils/*.h
 
-%{_libdir}/aws-c-sdkutils/cmake/aws-c-sdkutils-config.cmake
-%{_libdir}/aws-c-sdkutils/cmake/shared/aws-c-sdkutils-targets-noconfig.cmake
-%{_libdir}/aws-c-sdkutils/cmake/shared/aws-c-sdkutils-targets.cmake
+%{_libdir}/libaws-c-sdkutils.so
+%{_libdir}/cmake/aws-c-sdkutils/aws-c-sdkutils-config.cmake
+%{_libdir}/cmake/aws-c-sdkutils/shared/aws-c-sdkutils-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-sdkutils/shared/aws-c-sdkutils-targets.cmake
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.1-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.1.1-2
 - Prepare for package review
 

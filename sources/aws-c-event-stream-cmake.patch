@@ -1,0 +1,21 @@
+diff -urN aws-c-event-stream-0.2.7-orig/CMakeLists.txt aws-c-event-stream-0.2.7/CMakeLists.txt
+--- aws-c-event-stream-0.2.7-orig/CMakeLists.txt	2021-02-25 23:34:13.000000000 +0000
++++ aws-c-event-stream-0.2.7/CMakeLists.txt	2022-02-03 21:09:37.153327440 +0000
+@@ -91,7 +91,7 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-    DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}/"
++    DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/${TARGET_DIR}/"
+     NAMESPACE AWS::
+     COMPONENT Development)
+ 
+@@ -100,7 +100,7 @@
+     @ONLY)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-    DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/"
++    DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/"
+     COMPONENT Development)
+ 
+ 

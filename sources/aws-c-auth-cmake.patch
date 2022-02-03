@@ -1,0 +1,21 @@
+diff -urN aws-c-auth-0.6.5-orig/CMakeLists.txt aws-c-auth-0.6.5/CMakeLists.txt
+--- aws-c-auth-0.6.5-orig/CMakeLists.txt	2021-10-11 21:34:37.000000000 +0000
++++ aws-c-auth-0.6.5/CMakeLists.txt	2022-02-03 21:01:27.251192120 +0000
+@@ -119,7 +119,7 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}/"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/${TARGET_DIR}/"
+         NAMESPACE AWS::
+         COMPONENT Development)
+ 
+@@ -128,7 +128,7 @@
+         @ONLY)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/"
+         COMPONENT Development)
+ 
+ include(CTest)

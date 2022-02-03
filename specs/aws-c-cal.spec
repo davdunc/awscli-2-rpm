@@ -1,11 +1,12 @@
 Name:           aws-c-cal
 Version:        0.5.12 
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-cal-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -22,8 +23,7 @@ cryptography primitives
 
 %package libs
 Summary:        AWS Crypto Abstraction Layer
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-	
+
 %description libs
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for
 cryptography primitives
@@ -39,7 +39,7 @@ cryptography primitives
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -50,26 +50,26 @@ cryptography primitives
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
 %{_bindir}/sha256_profile
-
-%files libs
-%{_libdir}/libaws-c-cal.so
 %{_libdir}/libaws-c-cal.so.1.0.0
 
 %files devel
 %{_includedir}/aws/cal/*.h
 
-%{_libdir}/aws-c-cal/cmake/aws-c-cal-config.cmake
-%{_libdir}/aws-c-cal/cmake/modules/FindLibCrypto.cmake
-%{_libdir}/aws-c-cal/cmake/shared/aws-c-cal-targets-noconfig.cmake
-%{_libdir}/aws-c-cal/cmake/shared/aws-c-cal-targets.cmake
+%{_libdir}/libaws-c-cal.so
+%{_libdir}/cmake/aws-c-cal/aws-c-cal-config.cmake
+%{_libdir}/cmake/aws-c-cal/modules/FindLibCrypto.cmake
+%{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets.cmake
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.5.12-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.5.12-2
 - Prepare for package review
 

@@ -1,0 +1,21 @@
+diff -urN aws-c-compression-0.2.14-orig/CMakeLists.txt aws-c-compression-0.2.14/CMakeLists.txt
+--- aws-c-compression-0.2.14-orig/CMakeLists.txt	2021-07-19 16:32:41.000000000 +0000
++++ aws-c-compression-0.2.14/CMakeLists.txt	2022-02-03 20:46:34.497766827 +0000
+@@ -88,7 +88,7 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/${TARGET_DIR}"
+         NAMESPACE AWS::
+         COMPONENT Development)
+ 
+@@ -97,7 +97,7 @@
+         @ONLY)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/"
+         COMPONENT Development)
+ 
+ option(BUILD_HUFFMAN_GENERATOR "Whether or not to build the aws-c-common-huffman-generator tool" OFF)
