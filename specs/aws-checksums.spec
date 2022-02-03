@@ -1,11 +1,12 @@
 Name:           aws-checksums
 Version:        0.1.12 
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Checksum package for AWS SDK for C
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-checksums-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -21,8 +22,7 @@ fallback to efficient SW implementations.
 
 %package libs
 Summary:        Checksum package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-	
+
 %description libs
 Checksum package for AWS SDK for C. Contains
 Cross-Platform HW accelerated CRC32c and CRC32 with
@@ -40,7 +40,7 @@ fallback to efficient SW implementations.
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -51,23 +51,24 @@ fallback to efficient SW implementations.
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
-%files libs
-%{_libdir}/libaws-checksums.so
 %{_libdir}/libaws-checksums.so.1.0.0
 
 %files devel
 %{_includedir}/aws/checksums/*.h
 
-%{_libdir}/aws-checksums/cmake/aws-checksums-config.cmake
-%{_libdir}/aws-checksums/cmake/shared/aws-checksums-targets-noconfig.cmake
-%{_libdir}/aws-checksums/cmake/shared/aws-checksums-targets.cmake
+%{_libdir}/libaws-checksums.so
+%{_libdir}/cmake/aws-checksums/aws-checksums-config.cmake
+%{_libdir}/cmake/aws-checksums/shared/aws-checksums-targets-noconfig.cmake
+%{_libdir}/cmake/aws-checksums/shared/aws-checksums-targets.cmake
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.12-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.1.12-2
 - Prepare for package review
 

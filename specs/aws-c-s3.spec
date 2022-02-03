@@ -1,11 +1,12 @@
 Name:           aws-c-s3
 Version:        0.1.27
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        C99 library implementation for communicating with the S3 service
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-s3-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -31,7 +32,6 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 
 %package libs
 Summary:        C99 library implementation for communicating with the S3 service
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 library implementation for communicating with the S3 service,
@@ -48,7 +48,7 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -59,25 +59,26 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
-%files libs
-%{_libdir}/libaws-c-s3.so
 %{_libdir}/libaws-c-s3.so.0unstable
 %{_libdir}/libaws-c-s3.so.1.0.0
 
 %files devel
 %{_includedir}/aws/s3/*.h
 
-%{_libdir}/aws-c-s3/cmake/aws-c-s3-config.cmake
-%{_libdir}/aws-c-s3/cmake/shared/aws-c-s3-targets-noconfig.cmake
-%{_libdir}/aws-c-s3/cmake/shared/aws-c-s3-targets.cmake
+%{_libdir}/libaws-c-s3.so
+%{_libdir}/cmake/aws-c-s3/aws-c-s3-config.cmake
+%{_libdir}/cmake/aws-c-s3/shared/aws-c-s3-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-s3/shared/aws-c-s3-targets.cmake
 
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.27-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.1.27-2
 - Prepare for package review
 

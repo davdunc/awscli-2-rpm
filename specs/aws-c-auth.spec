@@ -1,11 +1,12 @@
 Name:           aws-c-auth
 Version:        0.6.5 
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        C99 library implementation of AWS client-side authentication
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-auth-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -32,7 +33,6 @@ standard credentials providers and signing
 
 %package libs
 Summary:        C99 library implementation of AWS client-side authentication
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 library implementation of AWS client-side authentication:
@@ -49,7 +49,7 @@ standard credentials providers and signing
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -75,6 +75,9 @@ standard credentials providers and signing
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.5-4
+- Add patch to set CMake configs to correct path
+
 * Thu Feb 03 2022 David Duncan <davdunc@amazon.com> - 0.6.5-3
 - Fix CMake targets and move files to lib
 

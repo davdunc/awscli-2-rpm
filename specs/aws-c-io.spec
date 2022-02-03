@@ -1,11 +1,12 @@
 Name:           aws-c-io
 Version:        0.10.12 
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        IO package for AWS SDK for C
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-io-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -24,8 +25,7 @@ for application protocols.
 
 %package libs
 Summary:        IO package for AWS SDK for C
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-	
+
 %description libs
 IO package for AWS SDK for C. It handles all IO and TLS work
 for application protocols.
@@ -43,7 +43,7 @@ for application protocols.
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -54,24 +54,25 @@ for application protocols.
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
-%files libs
-%{_libdir}/libaws-c-io.so
 %{_libdir}/libaws-c-io.so.1.0.0
 
 %files devel
 %{_includedir}/aws/io/*.h
 %{_includedir}/aws/testing/io_testing_channel.h
 
-%{_libdir}/aws-c-io/cmake/aws-c-io-config.cmake
-%{_libdir}/aws-c-io/cmake/shared/aws-c-io-targets-noconfig.cmake
-%{_libdir}/aws-c-io/cmake/shared/aws-c-io-targets.cmake
+%{_libdir}/libaws-c-io.so
+%{_libdir}/cmake/aws-c-io/aws-c-io-config.cmake
+%{_libdir}/cmake/aws-c-io/shared/aws-c-io-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-io/shared/aws-c-io-targets.cmake
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.10.12-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.10.12-2
 - Prepare for package review
 

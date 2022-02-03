@@ -1,0 +1,21 @@
+diff -urN aws-c-io-0.10.12-orig/CMakeLists.txt aws-c-io-0.10.12/CMakeLists.txt
+--- aws-c-io-0.10.12-orig/CMakeLists.txt	2021-10-15 20:38:27.000000000 +0000
++++ aws-c-io-0.10.12/CMakeLists.txt	2022-02-03 20:32:20.985273443 +0000
+@@ -215,7 +215,7 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/${TARGET_DIR}"
+         NAMESPACE AWS::
+         COMPONENT Development)
+ 
+@@ -224,7 +224,7 @@
+         @ONLY)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}"
+         COMPONENT Development)
+ 
+ if (NOT CMAKE_CROSSCOMPILING)

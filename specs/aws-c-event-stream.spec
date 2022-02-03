@@ -1,11 +1,12 @@
 Name:           aws-c-event-stream
 Version:        0.2.7 
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 
 License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         aws-c-event-stream-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
@@ -23,7 +24,6 @@ C99 implementation of the vnd.amazon.eventstream content-type
 
 %package libs
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description libs
 C99 implementation of the vnd.amazon.eventstream content-type
@@ -38,7 +38,7 @@ C99 implementation of the vnd.amazon.eventstream content-type
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
@@ -49,23 +49,24 @@ C99 implementation of the vnd.amazon.eventstream content-type
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
-%files libs
-%{_libdir}/libaws-c-event-stream.so
 %{_libdir}/libaws-c-event-stream.so.1.0.0
 
 %files devel
 %{_includedir}/aws/event-stream/*.h
 
-%{_libdir}/aws-c-event-stream/cmake/aws-c-event-stream-config.cmake
-%{_libdir}/aws-c-event-stream/cmake/shared/aws-c-event-stream-targets-noconfig.cmake
-%{_libdir}/aws-c-event-stream/cmake/shared/aws-c-event-stream-targets.cmake
+%{_libdir}/libaws-c-event-stream.so
+%{_libdir}/cmake/aws-c-event-stream/aws-c-event-stream-config.cmake
+%{_libdir}/cmake/aws-c-event-stream/shared/aws-c-event-stream-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-event-stream/shared/aws-c-event-stream-targets.cmake
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.2.7-3
+- Update specfile based on review feedback
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.2.7-2
 - Prepare for package review
 

@@ -1,0 +1,23 @@
+diff -urN aws-c-sdkutils-0.1.1-orig/CMakeLists.txt aws-c-sdkutils-0.1.1/CMakeLists.txt
+--- aws-c-sdkutils-0.1.1-orig/CMakeLists.txt	2021-10-12 23:38:33.000000000 +0000
++++ aws-c-sdkutils-0.1.1/CMakeLists.txt	2022-02-03 17:58:49.294211483 +0000
+@@ -94,16 +94,16 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-    DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}/"
++    DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/${TARGET_DIR}/"
+     NAMESPACE AWS::
+     COMPONENT Development)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-    DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake"
++    DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}"
+     COMPONENT Development)
+ 
+ install(FILES ${EXPORT_MODULES}
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/modules"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/modules"
+         COMPONENT Development)
+ 
+ if (NOT CMAKE_CROSSCOMPILING)
