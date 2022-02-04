@@ -10,9 +10,9 @@ SRPMS_DIR := $(BUILD_DIR)SRPMS/
 rpmbuild := rpmbuild --define "_topdir  $(abspath $(BUILD_DIR)rpmbuild)"
 
 ARCH := $(shell arch)
-SRCS := aws-c-common aws-c-cal aws-c-io aws-checksums	\
-aws-c-compression aws-c-http aws-c-mqtt aws-c-sdkutils	\
-aws-c-event-stream python-awscrt s2n-tls
+SRCS := aws-c-common aws-c-cal s2n-tls aws-c-io aws-checksums	\
+aws-c-compression aws-c-http aws-c-mqtt aws-c-sdkutils		\
+aws-c-event-stream python-awscrt
 setup:
 	@git pull
 	if [[ ! -d $(BUILD_DIR)$(SRPMS_DIR) ]]; then mkdir $(BUILD_DIR)$(SRPMS_DIR); fi
@@ -32,7 +32,7 @@ $(SRCS):
 	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
 
 install:
-	install -m 660  $(BUILD_DIR)rpmbuild/SRPMS/*.src.rpm $(SRPMS_DIR)/
+	install -m 660  $(BUILD_DIR)rpmbuild/SRPMS/*.src.rpm $(SRPMS_DIR)
 
 
 all: setup build install 
@@ -42,7 +42,7 @@ clean:
 	  do
 	    sudo dnf remove -y $(FILE)
 	done
-	sudo dnf remove -y aws-event-stream
+	sudo dnf remove -y aws-c-event-stream*
 	sudo dnf remove -y aws-c-sdkutils*
 	sudo dnf remove -y aws-c-mqtt*
 	sudo dnf remove -y aws-c-http*
