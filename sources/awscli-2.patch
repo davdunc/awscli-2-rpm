@@ -1,6 +1,6 @@
 diff -urN aws-cli-2.4.12-orig/awscli/customizations/wizard/app.py aws-cli-2.4.12/awscli/customizations/wizard/app.py
 --- aws-cli-2.4.12-orig/awscli/customizations/wizard/app.py	2022-01-18 22:00:18.000000000 +0000
-+++ aws-cli-2.4.12/awscli/customizations/wizard/app.py	2022-01-20 22:02:20.045784837 +0000
++++ aws-cli-2.4.12/awscli/customizations/wizard/app.py	2022-02-04 08:19:28.000000000 +0000
 @@ -12,10 +12,10 @@
  # language governing permissions and limitations under the License.
  import json
@@ -13,18 +13,35 @@ diff -urN aws-cli-2.4.12-orig/awscli/customizations/wizard/app.py aws-cli-2.4.12
  
  from awscli.customizations.wizard import core
  from awscli.customizations.wizard.ui.style import get_default_style
-@@ -68,7 +68,7 @@
+@@ -35,8 +35,6 @@
+         """Run a single wizard given the contents as a string."""
+         app = self._app_factory(loaded, self._session)
+         app.run()
+-        # Propagates any exceptions that got set while in the app
+-        app.future.result()
+         print(app.traverser.get_output())
+ 
+ 
+@@ -67,13 +65,12 @@
+         previous_exc_handler = loop.get_exception_handler()
          loop.set_exception_handler(self._handle_exception)
          try:
-             f = self.run_async(pre_run=pre_run)
+-            f = self.run_async(pre_run=pre_run)
 -            run_until_complete(f)
-+            loop.run_until_complete(f)
-             return f.result()
+-            return f.result()
++            f = self.run_async(pre_run=pre_run, set_exception_handler=False)
++            return loop.run_until_complete(f)
          finally:
              loop.set_exception_handler(previous_exc_handler)
+ 
+-    def _handle_exception(self, context):
++    def _handle_exception(self, loop, context):
+         self.exit(
+             exception=UnexpectedWizardException(context['exception'])
+         )
 diff -urN aws-cli-2.4.12-orig/setup.cfg aws-cli-2.4.12/setup.cfg
 --- aws-cli-2.4.12-orig/setup.cfg	2022-01-18 22:00:18.000000000 +0000
-+++ aws-cli-2.4.12/setup.cfg	2022-01-20 21:49:45.335819606 +0000
++++ aws-cli-2.4.12/setup.cfg	2022-02-03 23:58:59.760481192 +0000
 @@ -28,14 +28,13 @@
  python_requires = >=3.7
  include_package_data = True
@@ -46,3 +63,107 @@ diff -urN aws-cli-2.4.12-orig/setup.cfg aws-cli-2.4.12/setup.cfg
      python-dateutil>=2.1,<3.0.0
      jmespath>=0.7.1,<1.0.0
      urllib3>=1.25.4,<1.27
+diff -urN aws-cli-2.4.12-orig/tests/__init__.py aws-cli-2.4.12/tests/__init__.py
+--- aws-cli-2.4.12-orig/tests/__init__.py	2022-01-18 22:00:18.000000000 +0000
++++ aws-cli-2.4.12/tests/__init__.py	2022-02-04 08:19:44.000000000 +0000
+@@ -37,6 +37,7 @@
+ from botocore.exceptions import ClientError, WaiterError
+ 
+ import prompt_toolkit
++import prompt_toolkit.buffer
+ import prompt_toolkit.input
+ import prompt_toolkit.output
+ import prompt_toolkit.input.defaults
+@@ -425,6 +426,14 @@
+     def start_completion_for_current_buffer(self):
+         def start_completion(app):
+             app.current_buffer.start_completion()
++            # We process another a noop key so that the event loop
++            # will set completions before the next key press.
++            app.key_processor.feed(
++                prompt_toolkit.key_binding.key_processor.KeyPress(
++                    prompt_toolkit.keys.Keys.Right, ''
++                )
++            )
++            app.key_processor.process_keys()
+         self._queue.append(AppCallbackAction(callback=start_completion))
+ 
+     def add_text_to_current_buffer(self, text):
+@@ -480,7 +489,7 @@
+ 
+         _stdout = TextIOWrapper(BytesIO(), encoding="utf-8")
+         self._app.output.stdout = _stdout
+-        self._app.run(pre_run=pre_run)
++        return self._app.run(pre_run=pre_run)
+ 
+ 
+ class S3Utils:
+diff -urN aws-cli-2.4.12-orig/tests/unit/customizations/wizard/test_app.py aws-cli-2.4.12/tests/unit/customizations/wizard/test_app.py
+--- aws-cli-2.4.12-orig/tests/unit/customizations/wizard/test_app.py	2022-01-18 22:00:18.000000000 +0000
++++ aws-cli-2.4.12/tests/unit/customizations/wizard/test_app.py	2022-02-04 08:19:04.000000000 +0000
+@@ -10,13 +10,13 @@
+ # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+ # ANY KIND, either express or implied. See the License for the specific
+ # language governing permissions and limitations under the License.
++from asyncio import Future
+ from io import BytesIO, TextIOWrapper
+ from awscli.testutils import unittest, mock
+ 
+ from botocore.session import Session
+ from prompt_toolkit.application import Application
+ from prompt_toolkit.completion import PathCompleter, Completion
+-from prompt_toolkit.eventloop import Future
+ from prompt_toolkit.input.defaults import create_pipe_input
+ from prompt_toolkit.keys import Keys
+ from prompt_toolkit.layout import walk
+@@ -52,12 +52,11 @@
+     def test_run_calls_expected_app_interfaces(self):
+         self.runner.run(self.definition)
+         self.app.run.assert_called_with()
+-        self.app.future.result.assert_called_with()
+         self.app.traverser.get_output.assert_called_with()
+ 
+-    def test_run_propagates_error_from_app_future(self):
++    def test_run_propagates_error_from_app_run(self):
+         expected_exception = KeyboardInterrupt
+-        self.app.future.result.side_effect = KeyboardInterrupt
++        self.app.run.side_effect = KeyboardInterrupt
+         with self.assertRaises(expected_exception):
+             self.runner.run(self.definition)
+ 
+@@ -293,8 +292,7 @@
+         self.add_answer_submission('second_section_val1')
+         self.add_run_wizard_dialog_is_visible()
+         self.stubbed_app.add_keypress(Keys.Enter)
+-        self.stubbed_app.run()
+-        self.assertEqual(self.app.future.result(), 0)
++        self.assertEqual(self.stubbed_app.run(), 0)
+ 
+     def test_can_go_back_from_run_wizard_dialog(self):
+         self.add_answer_submission('val1')
+@@ -318,7 +316,6 @@
+         self.stubbed_app.add_keypress(Keys.ControlC)
+         with self.assertRaises(KeyboardInterrupt):
+             self.stubbed_app.run()
+-            self.app.future.result()
+ 
+     def test_captures_unexpected_errors_when_processing_input(self):
+         unexpected_error = ValueError('Not expected')
+@@ -1577,11 +1574,14 @@
+ 
+ class FakePathCompleter(PathCompleter):
+     def get_completions(self, document, complete_event):
++        filenames = ['file1', 'file2']
++        if document.text in filenames:
++            # Do not suggestion completions for already completed text
++            return
+         prefix_len = len(document.text)
+-
+         yield from [
+-            Completion('file1'[prefix_len:], 0, display='file1'),
+-            Completion('file2'[prefix_len:], 0, display='file2'),
++            Completion(filename[prefix_len:], 0, display=filename)
++            for filename in filenames
+         ]
+ 
+ 

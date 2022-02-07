@@ -1,3 +1,4 @@
+
 .ONESHELL:
 .PHONY: all clean setup
 
@@ -31,7 +32,7 @@ $(SRCS):
 	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
 
 install:
-	install -m 660  $(BUILD_DIR)rpmbuild/SRPMS/*.src.rpm $(SRPMS_DIR)/
+	install -m 660  $(BUILD_DIR)rpmbuild/SRPMS/*.src.rpm $(SRPMS_DIR)
 
 
 all: setup build install 

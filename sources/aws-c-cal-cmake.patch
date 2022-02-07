@@ -1,0 +1,27 @@
+diff -urN aws-c-cal-0.5.12-orig/CMakeLists.txt aws-c-cal-0.5.12/CMakeLists.txt
+--- aws-c-cal-0.5.12-orig/CMakeLists.txt	2021-09-07 17:35:32.000000000 +0000
++++ aws-c-cal-0.5.12/CMakeLists.txt	2022-02-03 18:42:49.460699118 +0000
+@@ -158,12 +158,12 @@
+ endif()
+ 
+ install(EXPORT "${PROJECT_NAME}-targets"
+-    DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/${TARGET_DIR}/"
++    DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/${TARGET_DIR}/"
+     NAMESPACE AWS::
+     COMPONENT Development)
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+-    DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake"
++    DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}"
+     COMPONENT Development)
+ 
+ list(APPEND EXPORT_MODULES
+@@ -171,7 +171,7 @@
+     )
+ 
+ install(FILES ${EXPORT_MODULES}
+-        DESTINATION "${LIBRARY_DIRECTORY}/${PROJECT_NAME}/cmake/modules"
++        DESTINATION "${LIBRARY_DIRECTORY}/cmake/${PROJECT_NAME}/modules"
+         COMPONENT Development)
+ 
+ if (NOT CMAKE_CROSSCOMPILING AND NOT BYO_CRYPTO)

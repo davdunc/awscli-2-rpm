@@ -1,29 +1,29 @@
 Name:           aws-c-mqtt
 Version:        0.7.8
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        C99 implementation of the MQTT 3.1.1 specification
-Epoch:          1
 
-License:        ASL-2.0
+License:        ASL 2.0
 URL:            https://github.com/awslabs/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         aws-c-mqtt-reconnect-api.patch
+Patch1:         aws-c-mqtt-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
-BuildRequires:  aws-c-common-devel = 1:0.6.14
-BuildRequires:  aws-c-cal-devel = 1:0.5.12
-BuildRequires:  aws-c-io-devel = 1:0.10.12
-BuildRequires:  aws-c-compression-devel = 1:0.2.14
-BuildRequires:  aws-c-http-devel = 1:0.6.8
+BuildRequires:  aws-c-common-devel = 0.6.14
+BuildRequires:  aws-c-cal-devel = 0.5.12
+BuildRequires:  aws-c-io-devel = 0.10.12
+BuildRequires:  aws-c-compression-devel = 0.2.14
+BuildRequires:  aws-c-http-devel = 0.6.8
 
 Requires:       openssl-devel
-Requires:       aws-c-common-libs = 1:0.6.14
-Requires:       aws-c-cal-libs = 1:0.5.12
-Requires:       aws-c-io-libs = 1:0.10.12
-Requires:       aws-c-compression-libs = 1:0.2.14
-Requires:       aws-c-http-libs = 1:0.6.8
+Requires:       aws-c-common-libs = 0.6.14
+Requires:       aws-c-cal-libs = 0.5.12
+Requires:       aws-c-io-libs = 0.10.12
+Requires:       aws-c-compression-libs = 0.2.14
+Requires:       aws-c-http-libs = 0.6.8
 
 %description
 C99 implementation of the MQTT 3.1.1 specification
@@ -31,7 +31,6 @@ C99 implementation of the MQTT 3.1.1 specification
 
 %package libs
 Summary:        C99 implementation of the MQTT 3.1.1 specification
-Requires:       %{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description libs
 C99 implementation of the MQTT 3.1.1 specification
@@ -39,7 +38,7 @@ C99 implementation of the MQTT 3.1.1 specification
 
 %package devel
 Summary:        C99 implementation of the MQTT 3.1.1 specification
-Requires:       %{name}-libs%{?_isa} = %{epoch}:%{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
 C99 implementation of the MQTT 3.1.1 specification
@@ -57,29 +56,32 @@ C99 implementation of the MQTT 3.1.1 specification
 %cmake_install
 
 
-%files
+%files libs
 %license LICENSE
 %doc README.md
-
 %{_bindir}/elastipubsub
-
-%files libs
-%{_libdir}/libaws-c-mqtt.so
 %{_libdir}/libaws-c-mqtt.so.1.0.0
 
 %files devel
 %{_includedir}/aws/mqtt/*.h
 %{_includedir}/aws/mqtt/private/mqtt_client_test_helper.h
 
-%{_libdir}/aws-c-mqtt/cmake/aws-c-mqtt-config.cmake
-%{_libdir}/aws-c-mqtt/cmake/shared/aws-c-mqtt-targets-noconfig.cmake
-%{_libdir}/aws-c-mqtt/cmake/shared/aws-c-mqtt-targets.cmake
+%{_libdir}/libaws-c-mqtt.so
+%{_libdir}/cmake/aws-c-mqtt/aws-c-mqtt-config.cmake
+%{_libdir}/cmake/aws-c-mqtt/shared/aws-c-mqtt-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-mqtt/shared/aws-c-mqtt-targets.cmake
 
 
 
 %changelog
-* Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 1:0.7.8-2
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-4
+- Update specfile based on review feedback
+
+* Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.7.8-3
+- Prepare for package review
+
+* Tue Jan 25 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-2
 - Add patch to make missing API accessible when a shared library
 
-* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com>
-- 
+* Tue Jan 18 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-1
+- Initial package development
