@@ -19,6 +19,7 @@ packages:
   - rpm-build
   - git-credential-libsecret
   - unzip
+  - python-wheel
   
 runcmd:
   - ['git', 'config', '--global', 'credential.helper', 'store']
