@@ -1,6 +1,6 @@
 Name:           aws-c-cal
 Version:        0.5.12 
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
 License:        ASL 2.0
@@ -15,6 +15,7 @@ BuildRequires:  openssl-devel
 
 Requires:       aws-c-common-libs = 0.6.14
 Requires:       openssl
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for
@@ -49,11 +50,12 @@ cryptography primitives
 %install
 %cmake_install
 
+%files
+%{_bindir}/sha256_profile
 
 %files libs
 %license LICENSE
 %doc README.md
-%{_bindir}/sha256_profile
 %{_libdir}/libaws-c-cal.so.1.0.0
 
 %files devel
@@ -67,6 +69,9 @@ cryptography primitives
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.5.12-4
+- Move sha256_profile executable to standard package
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.5.12-3
 - Update specfile based on review feedback
 

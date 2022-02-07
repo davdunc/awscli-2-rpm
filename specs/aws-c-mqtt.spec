@@ -1,6 +1,6 @@
 Name:           aws-c-mqtt
 Version:        0.7.8
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        C99 implementation of the MQTT 3.1.1 specification
 
 License:        ASL 2.0
@@ -24,6 +24,7 @@ Requires:       aws-c-cal-libs = 0.5.12
 Requires:       aws-c-io-libs = 0.10.12
 Requires:       aws-c-compression-libs = 0.2.14
 Requires:       aws-c-http-libs = 0.6.8
+Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description
 C99 implementation of the MQTT 3.1.1 specification
@@ -55,11 +56,12 @@ C99 implementation of the MQTT 3.1.1 specification
 %install
 %cmake_install
 
+%files
+%{_bindir}/elastipubsub
 
 %files libs
 %license LICENSE
 %doc README.md
-%{_bindir}/elastipubsub
 %{_libdir}/libaws-c-mqtt.so.1.0.0
 
 %files devel
@@ -74,6 +76,9 @@ C99 implementation of the MQTT 3.1.1 specification
 
 
 %changelog
+* Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-5
+- Move elastipubsub executable to standard package
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-4
 - Update specfile based on review feedback
 
