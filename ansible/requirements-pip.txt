@@ -1,0 +1,10 @@
+ansible
+awscli
+boto3
+botocore
+jenkins-job-builder
+python-jenkins
+PyYAML
+requests
+susepubliccloudinfo
+openpyxl
