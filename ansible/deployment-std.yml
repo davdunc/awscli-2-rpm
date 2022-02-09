@@ -8,14 +8,15 @@
   vars:
     fedora_release: 35
     centos_release: 8
+    aws_account: 125523088429
     region: us-east-1
     profile: ansible
     aws_instance_role: Tools-Instance
-    subnet: subnet-06390f70b9a87cc70  # us-east-1 subnet from fedpkg instances
+    subnet: subnet-0ea8c1b2a8060843b  # us-east-1 subnet from fedpkg instances
     ec2_architecture: arm64
     ec2_instance_type:
-      x86_64: m6i.metal
-      arm64: m6g.metal
+      x86_64: t3.large
+      arm64: t4g.large
 
   tasks:
     - name: Create a proper security group specific to the build images
@@ -30,7 +31,7 @@
       amazon.aws.ec2_ami_info:
         region: "{{ region }}"
         profile: "{{ profile }}"
-        owners: 125523088429
+        owners: "{{ aws_account }}"
         filters:
           architecture: "{{ ec2_architecture }}"
           name: "CentOS Stream 8*"
@@ -40,7 +41,7 @@
       amazon.aws.ec2_ami_info:
         region: "{{ region }}"
         profile: "{{ profile }}"
-        owners: 125523088429
+        owners: "{{ aws_account }}"
         filters:
           architecture: "{{ ec2_architecture }}"
           name: "Fedora-Cloud-Base-{{ fedora_release }}*"
