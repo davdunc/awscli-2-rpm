@@ -1,6 +1,6 @@
 Name:           aws-c-common
 Version:        0.6.14 
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Core c99 package for AWS SDK for C
 
 License:        ASL 2.0
@@ -51,11 +51,16 @@ configuration, data structures, and error handling.
 %{_libdir}/libaws-c-common.so.1{,.*}
 
 %files devel
+%dir %{_includedir}/aws/common
+%dir %{_includedir}/aws/common/posix
+%dir %{_includedir}/aws/testing
 %{_includedir}/aws/common/*.h
 %{_includedir}/aws/common/*.inl
 %{_includedir}/aws/common/posix/common.inl
 %{_includedir}/aws/testing/aws_test_harness.h
 
+%dir %{_libdir}/cmake/aws-c-common
+%dir %{_libdir}/cmake/aws-c-common/shared
 %{_libdir}/libaws-c-common.so
 %{_libdir}/cmake/aws-c-common/aws-c-common-config.cmake
 %{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets-noconfig.cmake
@@ -72,6 +77,9 @@ configuration, data structures, and error handling.
 
 
 %changelog
+* Wed Feb 16 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.14-5
+- Include missing devel directories
+
 * Thu Feb 03 2022 David Duncan <davdunc@amazon.com> - 0.6.14-4
 - rebuilt for fedora review
 
