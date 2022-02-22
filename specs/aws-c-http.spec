@@ -1,6 +1,6 @@
 Name:           aws-c-http
 Version:        0.6.8 
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 
 License:        ASL 2.0
@@ -59,8 +59,11 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 %{_libdir}/libaws-c-http.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/http
 %{_includedir}/aws/http/*.h
 
+%dir %{_libdir}/cmake/aws-c-http
+%dir %{_libdir}/cmake/aws-c-http/shared
 %{_libdir}/libaws-c-http.so
 %{_libdir}/cmake/aws-c-http/aws-c-http-config.cmake
 %{_libdir}/cmake/aws-c-http/shared/aws-c-http-targets-noconfig.cmake
@@ -68,6 +71,9 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.8-5
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.8-4
 - Move elasticurl executable to standard package
 

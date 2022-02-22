@@ -1,6 +1,6 @@
 Name:           aws-c-mqtt
 Version:        0.7.8
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        C99 implementation of the MQTT 3.1.1 specification
 
 License:        ASL 2.0
@@ -65,9 +65,13 @@ C99 implementation of the MQTT 3.1.1 specification
 %{_libdir}/libaws-c-mqtt.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/mqtt
+%dir %{_includedir}/aws/mqtt/private
 %{_includedir}/aws/mqtt/*.h
 %{_includedir}/aws/mqtt/private/mqtt_client_test_helper.h
 
+%dir %{_libdir}/cmake/aws-c-mqtt
+%dir %{_libdir}/cmake/aws-c-mqtt/shared
 %{_libdir}/libaws-c-mqtt.so
 %{_libdir}/cmake/aws-c-mqtt/aws-c-mqtt-config.cmake
 %{_libdir}/cmake/aws-c-mqtt/shared/aws-c-mqtt-targets-noconfig.cmake
@@ -76,6 +80,9 @@ C99 implementation of the MQTT 3.1.1 specification
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-6
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.7.8-5
 - Move elastipubsub executable to standard package
 
