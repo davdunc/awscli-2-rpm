@@ -1,6 +1,6 @@
 Name:           aws-c-sdkutils
 Version:        0.1.1 
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Utility package for AWS SDK for C
 
 License:        ASL 2.0
@@ -52,8 +52,11 @@ Utility package for AWS SDK for C
 %{_libdir}/libaws-c-sdkutils.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/sdkutils
 %{_includedir}/aws/sdkutils/*.h
 
+%dir %{_libdir}/cmake/aws-c-sdkutils
+%dir %{_libdir}/cmake/aws-c-sdkutils/shared
 %{_libdir}/libaws-c-sdkutils.so
 %{_libdir}/cmake/aws-c-sdkutils/aws-c-sdkutils-config.cmake
 %{_libdir}/cmake/aws-c-sdkutils/shared/aws-c-sdkutils-targets-noconfig.cmake
@@ -61,6 +64,9 @@ Utility package for AWS SDK for C
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.1-4
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.1-3
 - Update specfile based on review feedback
 

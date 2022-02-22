@@ -1,6 +1,6 @@
 Name:           aws-checksums
 Version:        0.1.12 
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Checksum package for AWS SDK for C
 
 License:        ASL 2.0
@@ -57,8 +57,11 @@ fallback to efficient SW implementations.
 %{_libdir}/libaws-checksums.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/checksums
 %{_includedir}/aws/checksums/*.h
 
+%dir %{_libdir}/cmake/aws-checksums
+%dir %{_libdir}/cmake/aws-checksums/shared
 %{_libdir}/libaws-checksums.so
 %{_libdir}/cmake/aws-checksums/aws-checksums-config.cmake
 %{_libdir}/cmake/aws-checksums/shared/aws-checksums-targets-noconfig.cmake
@@ -66,6 +69,9 @@ fallback to efficient SW implementations.
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.12-4
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.12-3
 - Update specfile based on review feedback
 

@@ -1,6 +1,6 @@
 Name:           aws-c-io
 Version:        0.10.12 
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        IO package for AWS SDK for C
 
 License:        ASL 2.0
@@ -60,9 +60,13 @@ for application protocols.
 %{_libdir}/libaws-c-io.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/io
+%dir %{_includedir}/aws/testing
 %{_includedir}/aws/io/*.h
 %{_includedir}/aws/testing/io_testing_channel.h
 
+%dir %{_libdir}/cmake/aws-c-io
+%dir %{_libdir}/cmake/aws-c-io/shared
 %{_libdir}/libaws-c-io.so
 %{_libdir}/cmake/aws-c-io/aws-c-io-config.cmake
 %{_libdir}/cmake/aws-c-io/shared/aws-c-io-targets-noconfig.cmake
@@ -70,6 +74,9 @@ for application protocols.
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.10.12-4
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.10.12-3
 - Update specfile based on review feedback
 

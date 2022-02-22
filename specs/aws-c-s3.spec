@@ -1,6 +1,6 @@
 Name:           aws-c-s3
 Version:        0.1.27
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        C99 library implementation for communicating with the S3 service
 
 License:        ASL 2.0
@@ -66,8 +66,11 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 %{_libdir}/libaws-c-s3.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/s3
 %{_includedir}/aws/s3/*.h
 
+%dir %{_libdir}/cmake/aws-c-s3
+%dir %{_libdir}/cmake/aws-c-s3/shared
 %{_libdir}/libaws-c-s3.so
 %{_libdir}/cmake/aws-c-s3/aws-c-s3-config.cmake
 %{_libdir}/cmake/aws-c-s3/shared/aws-c-s3-targets-noconfig.cmake
@@ -76,6 +79,9 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.27-4
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.27-3
 - Update specfile based on review feedback
 

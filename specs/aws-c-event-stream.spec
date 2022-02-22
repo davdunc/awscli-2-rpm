@@ -1,6 +1,6 @@
 Name:           aws-c-event-stream
 Version:        0.2.7 
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 
 License:        ASL 2.0
@@ -55,8 +55,11 @@ C99 implementation of the vnd.amazon.eventstream content-type
 %{_libdir}/libaws-c-event-stream.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/event-stream
 %{_includedir}/aws/event-stream/*.h
 
+%dir %{_libdir}/cmake/aws-c-event-stream
+%dir %{_libdir}/cmake/aws-c-event-stream/shared
 %{_libdir}/libaws-c-event-stream.so
 %{_libdir}/cmake/aws-c-event-stream/aws-c-event-stream-config.cmake
 %{_libdir}/cmake/aws-c-event-stream/shared/aws-c-event-stream-targets-noconfig.cmake
@@ -64,6 +67,9 @@ C99 implementation of the vnd.amazon.eventstream content-type
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.2.7-4
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.2.7-3
 - Update specfile based on review feedback
 

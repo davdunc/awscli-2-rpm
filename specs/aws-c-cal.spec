@@ -1,6 +1,6 @@
 Name:           aws-c-cal
 Version:        0.5.12 
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
 License:        ASL 2.0
@@ -59,8 +59,12 @@ cryptography primitives
 %{_libdir}/libaws-c-cal.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/cal
 %{_includedir}/aws/cal/*.h
 
+%dir %{_libdir}/cmake/aws-c-cal
+%dir %{_libdir}/cmake/aws-c-cal/modules
+%dir %{_libdir}/cmake/aws-c-cal/shared
 %{_libdir}/libaws-c-cal.so
 %{_libdir}/cmake/aws-c-cal/aws-c-cal-config.cmake
 %{_libdir}/cmake/aws-c-cal/modules/FindLibCrypto.cmake
@@ -69,6 +73,9 @@ cryptography primitives
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.5.12-5
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.5.12-4
 - Move sha256_profile executable to standard package
 

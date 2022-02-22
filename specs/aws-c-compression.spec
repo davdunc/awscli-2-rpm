@@ -1,6 +1,6 @@
 Name:           aws-c-compression
 Version:        0.2.14
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Compression package for AWS SDK for C
 
 License:        ASL 2.0
@@ -54,8 +54,11 @@ compression algorithms such as gzip, and huffman encoding/decoding.
 %{_libdir}/libaws-c-compression.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/compression
 %{_includedir}/aws/compression/*.h
 
+%dir %{_libdir}/cmake/aws-c-compression
+%dir %{_libdir}/cmake/aws-c-compression/shared
 %{_libdir}/libaws-c-compression.so
 %{_libdir}/cmake/aws-c-compression/aws-c-compression-config.cmake
 %{_libdir}/cmake/aws-c-compression/shared/aws-c-compression-targets-noconfig.cmake
@@ -63,6 +66,9 @@ compression algorithms such as gzip, and huffman encoding/decoding.
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.2.14-4
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.2.14-3
 - Update specfile based on review feedback
 

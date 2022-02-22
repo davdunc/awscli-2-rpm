@@ -1,6 +1,6 @@
 Name:           aws-c-auth
 Version:        0.6.5 
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        C99 library implementation of AWS client-side authentication
 
 License:        ASL 2.0
@@ -66,8 +66,11 @@ standard credentials providers and signing
 %{_libdir}/libaws-c-auth.so.1.0.0
 
 %files devel
+%dir %{_includedir}/aws/auth
 %{_includedir}/aws/auth/*.h
 %{_libdir}/libaws-c-auth.so
+%dir %{_libdir}/cmake/aws-c-auth
+%dir %{_libdir}/cmake/aws-c-auth/shared
 %{_libdir}/cmake/aws-c-auth/aws-c-auth-config.cmake
 %{_libdir}/cmake/aws-c-auth/shared/aws-c-auth-targets-noconfig.cmake
 %{_libdir}/cmake/aws-c-auth/shared/aws-c-auth-targets.cmake
@@ -75,6 +78,9 @@ standard credentials providers and signing
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.5-5
+- Include missing devel directories
+
 * Thu Feb 03 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.5-4
 - Add patch to set CMake configs to correct path
 
