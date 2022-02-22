@@ -2,8 +2,8 @@
 %global appname awscli
 
 Name:           %{appname}-2
-Version:        2.4.12
-Release:        3%{?dist}
+Version:        2.4.19
+Release:        1%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
@@ -16,6 +16,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3dist(jsonschema)
 BuildRequires:  python3dist(mock)
 BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(pytest-xdist)
 
 Recommends:     groff
 Obsoletes:      awscli <= 1
@@ -32,6 +33,14 @@ interface to Amazon Web Services.
 %autosetup -p1 -n %{srcname}-%{version}
 find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 
+# We need to not run these test files because they import
+# jsonschema which is not able to be imported via the pytest
+# runner. It is similar to this issue: https://github.com/Julian/jsonschema/issues/584
+# This should be only temporary as once jsonschema is updated to the latest
+# version in Fedora, pytest is able to properly import it.
+rm tests/functional/botocore/test_waiter_config.py
+rm tests/functional/autocomplete/test_completion_files.py
+
 %generate_buildrequires
 %pyproject_buildrequires -r
 
@@ -46,12 +55,7 @@ find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 
 
 %check
-# The test command ignores two files because they import
-# jsonschema which is not able to be imported via the pytest
-# runner. It is similar to this issue: https://github.com/Julian/jsonschema/issues/584
-# This should be only temporary as once jsonschema is updated to the latest
-# version in Fedora, pytest is able to properly import it.
-%pytest tests/unit tests/functional --ignore=tests/functional/botocore/test_waiter_config.py --ignore=tests/functional/autocomplete/test_completion_files.py
+PATH="%{buildroot}%{_bindir}:$PATH" PYTHONPATH="${PYTHONPATH:-%{buildroot}%{python3_sitearch}:%{buildroot}%{python3_sitelib}}" PYTHONDONTWRITEBYTECODE=1 %{python3} scripts/ci/run-tests
 
 
 %files -f %{pyproject_files}
@@ -66,6 +70,9 @@ find awscli/examples/ -type f -name '*.rst' -executable -exec chmod -x '{}' +
 
 
 %changelog
+* Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 2.4.19-1
+- Import version 2.4.19
+
 * Fri Feb 04 2022 Kyle Knapp <kyleknap@amazon.com> - 2.4.12-3
 - Remove unneeded dependencies/macros and add check for tests
 
