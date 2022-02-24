@@ -37,6 +37,11 @@ install:
 all: setup build install 
 
 clean:
+	sudo dnf remove -y awscli-2*
+	sudo dnf remove -y python-awscrt*
+	sudo dnf remove -y aws-c-s3*
+	sudo dnf remove -y aws-c-event-stream*
+	sudo dnf remove -y aws-c-auth* 
 	sudo dnf remove -y aws-c-sdkutils*
 	sudo dnf remove -y aws-c-mqtt*
 	sudo dnf remove -y aws-c-http*
