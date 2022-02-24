@@ -1,6 +1,6 @@
 Name:           aws-c-common
 Version:        0.6.14 
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Core c99 package for AWS SDK for C
 
 License:        ASL 2.0
@@ -77,6 +77,9 @@ configuration, data structures, and error handling.
 
 
 %changelog
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.6.14-6
+- Updated for package review
+
 * Wed Feb 16 2022 Kyle Knapp <kyleknap@amazon.com> - 0.6.14-5
 - Include missing devel directories
 

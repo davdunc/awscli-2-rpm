@@ -1,6 +1,6 @@
 Name:           aws-c-io
 Version:        0.10.12 
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        IO package for AWS SDK for C
 
 License:        ASL 2.0
@@ -74,6 +74,9 @@ for application protocols.
 
 
 %changelog
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.10.12-5
+- Updated for package review
+
 * Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.10.12-4
 - Include missing devel directories
 

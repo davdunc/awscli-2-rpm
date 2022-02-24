@@ -1,6 +1,6 @@
 Name:           aws-c-sdkutils
 Version:        0.1.1 
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Utility package for AWS SDK for C
 
 License:        ASL 2.0
@@ -64,6 +64,9 @@ Utility package for AWS SDK for C
 
 
 %changelog
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.1.1-5
+- Updated for package review
+
 * Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.1.1-4
 - Include missing devel directories
 

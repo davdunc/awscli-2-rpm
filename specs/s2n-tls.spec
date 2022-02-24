@@ -1,6 +1,6 @@
 Name:           s2n-tls
 Version:        1.3.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        s2n: an implementation of the TLS/SSL protocols utilities
 
 License:        ASL 2.0
@@ -67,6 +67,9 @@ security as a priority.
 
 
 %changelog
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 1.3.2-3
+- Updated for package review
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 1.3.2-2
 - Prepare for package review
 

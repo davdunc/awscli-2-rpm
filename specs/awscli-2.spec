@@ -3,7 +3,7 @@
 
 Name:           %{appname}-2
 Version:        2.4.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
@@ -70,6 +70,9 @@ PATH="%{buildroot}%{_bindir}:$PATH" PYTHONPATH="${PYTHONPATH:-%{buildroot}%{pyth
 
 
 %changelog
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 2.4.19-2
+- Updated for package review
+
 * Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 2.4.19-1
 - Import version 2.4.19
 

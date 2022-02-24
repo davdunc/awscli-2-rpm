@@ -1,6 +1,6 @@
 Name:           python-awscrt
 Version:        0.12.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python bindings for the AWS Common Runtime
 License:        AL-2.0
 URL:            https://github.com/awslabs/aws-crt-python
@@ -81,6 +81,9 @@ sed -i "s/1.0.0-dev/%{version}/g" awscrt/__init__.py
 
 
 %changelog
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.12.6-3
+- Updated for package review
+
 * Wed Feb 02 2022 David Duncan <davdunc@amazon.com> - 0.12.6-2
 - Prepare for package review
 
