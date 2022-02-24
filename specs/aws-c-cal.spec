@@ -1,6 +1,6 @@
 Name:           aws-c-cal
-Version:        0.5.12 
-Release:        5%{?dist}
+Version:        0.5.12
+Release:        7%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
 License:        ASL 2.0
@@ -32,6 +32,7 @@ cryptography primitives
 
 %package devel
 Summary:        AWS Crypto Abstraction Layer
+Requires:       aws-c-common-devel
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
 %description devel
@@ -49,6 +50,9 @@ cryptography primitives
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %{_bindir}/sha256_profile
@@ -73,6 +77,12 @@ cryptography primitives
 
 
 %changelog
+* Thu Feb 24 2022 David Duncan <davdunc@amazon.com> - 0.5.12-7
+- Include check and ctest section in spec
+
+* Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.5.12-6
+- Updated for package review
+
 * Tue Feb 22 2022 Kyle Knapp <kyleknap@amazon.com> - 0.5.12-5
 - Include missing devel directories
 
