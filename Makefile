@@ -4,16 +4,15 @@
 
 PACKAGER := nobody
 
-BUILD_DIR := ./
+BUILD_DIR := 
 SRPMS_DIR := $(BUILD_DIR)SRPMS/
 
 rpmbuild := rpmbuild --define "_topdir  $(abspath $(BUILD_DIR)rpmbuild)"
 
 ARCH := $(shell arch)
-SRCS = aws-c-common.spec, aws-c-auth.spec, aws-c-cal.spec,		\
-aws-c-compression.spec, aws-c-event-stream.spec, aws-checksums.spec,	\
-aws-c-http.spec, aws-c-io.spec, awscli-2.spec, aws-c-mqtt.spec,		\
-aws-c-s3.spec, aws-c-sdkutils.spec, python-awscrt.spec, s2n-tls.spec
+SRCS = aws-c-common aws-c-cal aws-c-compression aws-checksums s2n-tls	\
+aws-c-io aws-c-http aws-c-mqtt aws-c-sdkutils aws-c-auth		\
+aws-c-event-stream aws-c-s3 python-awscrt awscli-2
 setup:
 	if [[ ! -d $(BUILD_DIR)$(SRPMS_DIR) ]]; then mkdir $(BUILD_DIR)$(SRPMS_DIR); fi
 	@touch $(SRPMS_DIR)/$(shell date "+%Y%m%d").build
