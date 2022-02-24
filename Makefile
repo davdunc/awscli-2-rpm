@@ -22,10 +22,10 @@ build: $(SRCS)
 
 $(SRCS):
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
+	@ls sources/$@* && install sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/
 	@pushd $(BUILD_DIR)rpmbuild/SOURCES
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
 	spectool --get-files ../SPECS/$@.spec
-	if [[ -f sources/$@*.patch ]] ; then cp sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/ ; fi
 	popd
 	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
 	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
