@@ -3,3 +3,5 @@
 \#*\#
 /ansible/pyenv/
 /ansible/ansible_collections/
+/rpmbuild/
+/SRPMS/
