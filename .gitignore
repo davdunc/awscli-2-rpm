@@ -5,3 +5,4 @@
 /ansible/ansible_collections/
 /rpmbuild/
 /SRPMS/
+*~
