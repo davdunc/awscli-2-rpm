@@ -1,5 +1,3 @@
-%global c-common-version 0.8.5
-
 Name:           aws-c-cal
 Version:        0.5.12
 Release:        7%{?dist}
@@ -12,10 +10,10 @@ Patch0:         aws-c-cal-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
-BuildRequires:  aws-c-common-devel = %{c-common-version}
+BuildRequires:  aws-c-common-devel = 0.6.14
 BuildRequires:  openssl-devel
 
-Requires:       aws-c-common-libs = %{c-common-version}
+Requires:       aws-c-common-libs = 0.6.14
 Requires:       openssl
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 
