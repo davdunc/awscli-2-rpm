@@ -1,5 +1,5 @@
 Name:           aws-c-common
-Version:        0.6.14 
+Version:        0.8.5
 Release:        6%{?dist}
 Summary:        Core c99 package for AWS SDK for C
 
