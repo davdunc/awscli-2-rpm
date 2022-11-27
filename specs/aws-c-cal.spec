@@ -1,5 +1,5 @@
 Name:           aws-c-cal
-Version:        0.5.12
+Version:        0.5.20
 Release:        7%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
