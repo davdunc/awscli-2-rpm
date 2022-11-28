@@ -6,3 +6,4 @@
 /rpmbuild/
 /SRPMS/
 *~
+/ansible/venv/
