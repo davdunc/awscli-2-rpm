@@ -39,7 +39,6 @@ Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for
 cryptography primitives
 
-
 %prep
 %autosetup -p1
 
