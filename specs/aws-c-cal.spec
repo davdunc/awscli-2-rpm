@@ -49,14 +49,15 @@ cryptography primitives
 
 %install
 %cmake_install
-install -m 0444 LICENSE $RPM_BUILD_ROOT/LICENSE
-install -m 0644 README.md $RPM_BUILD_ROOT/README.md
 
 %check
 %ctest
 
 %files
 %{_bindir}/sha256_profile
+%{_bindir}/produce_x_platform_fuzz_corpus
+%{_bindir}/run_x_platform_fuzz_corpus
+
 %license LICENSE
 %doc README.md
 
