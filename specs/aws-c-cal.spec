@@ -1,6 +1,6 @@
 Name:           aws-c-cal
 Version:        0.5.20
-Release:        7%{?dist}
+Release:        1%{?dist}
 Summary:        AWS Crypto Abstraction Layer
 
 License:        ASL 2.0
@@ -82,6 +82,9 @@ cryptography primitives
 %{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets.cmake
 
 %changelog
+* Wed Nov 30 2022 David Duncan <davdunc@amazon.com> - 0.5.20-1
+- updated to 0.5.20 sub-minor release
+
 * Thu Feb 24 2022 David Duncan <davdunc@amazon.com> - 0.5.12-7
 - Include check and ctest section in spec
 
