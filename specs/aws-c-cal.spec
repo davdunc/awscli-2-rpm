@@ -50,31 +50,41 @@ cryptography primitives
 
 %install
 %cmake_install
+install -m 0444 LICENSE $RPM_BUILD_ROOT/LICENSE
+install -m 0644 README.md $RPM_BUILD_ROOT/README.md
+rm -vrf ${buildroot}%{_prefix}/lib/.build-id
 
 %check
 %ctest
 
 %files
 %{_bindir}/sha256_profile
-
-%files libs
 %license LICENSE
 %doc README.md
+
+%files libs
+%dir %{_libdir}/cmake/aws-c-cal/shared
+%dir %{_libdir}/cmake/aws-c-cal/modules
 %{_libdir}/libaws-c-cal.so.1.0.0
+%{_libdir}/libaws-c-cal.so
+%{_libdir}/cmake/aws-c-cal/aws-c-cal-config.cmake
+%{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets.cmake
+%{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets-noconfig.cmake
+%{_libdir}/cmake/aws-c-cal/modules/Findcrypto.cmake
 
 %files devel
 %dir %{_includedir}/aws/cal
 %{_includedir}/aws/cal/*.h
 
+%dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/aws-c-cal
 %dir %{_libdir}/cmake/aws-c-cal/modules
 %dir %{_libdir}/cmake/aws-c-cal/shared
 %{_libdir}/libaws-c-cal.so
 %{_libdir}/cmake/aws-c-cal/aws-c-cal-config.cmake
-%{_libdir}/cmake/aws-c-cal/modules/FindLibCrypto.cmake
+%{_libdir}/cmake/aws-c-cal/modules/Findcrypto.cmake
 %{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets-noconfig.cmake
 %{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets.cmake
-
 
 %changelog
 * Thu Feb 24 2022 David Duncan <davdunc@amazon.com> - 0.5.12-7
