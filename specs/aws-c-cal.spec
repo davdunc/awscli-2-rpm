@@ -51,7 +51,6 @@ cryptography primitives
 %cmake_install
 install -m 0444 LICENSE $RPM_BUILD_ROOT/LICENSE
 install -m 0644 README.md $RPM_BUILD_ROOT/README.md
-rm -vrf ${buildroot}%{_prefix}/lib/.build-id
 
 %check
 %ctest
