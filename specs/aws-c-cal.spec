@@ -66,10 +66,6 @@ cryptography primitives
 %dir %{_libdir}/cmake/aws-c-cal/modules
 %{_libdir}/libaws-c-cal.so.1.0.0
 %{_libdir}/libaws-c-cal.so
-%{_libdir}/cmake/aws-c-cal/aws-c-cal-config.cmake
-%{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets.cmake
-%{_libdir}/cmake/aws-c-cal/shared/aws-c-cal-targets-noconfig.cmake
-%{_libdir}/cmake/aws-c-cal/modules/Findcrypto.cmake
 
 %files devel
 %dir %{_includedir}/aws/cal
