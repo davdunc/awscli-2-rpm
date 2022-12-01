@@ -61,19 +61,23 @@ configuration, data structures, and error handling.
 
 %dir %{_libdir}/cmake/aws-c-common
 %dir %{_libdir}/cmake/aws-c-common/shared
+
 %{_libdir}/libaws-c-common.so
-%{_libdir}/cmake/aws-c-common/aws-c-common-config.cmake
-%{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets-noconfig.cmake
-%{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets.cmake
-%{_libdir}/cmake/AwsCFlags.cmake
-%{_libdir}/cmake/AwsCheckHeaders.cmake
-%{_libdir}/cmake/AwsFeatureTests.cmake
-%{_libdir}/cmake/AwsFindPackage.cmake
-%{_libdir}/cmake/AwsLibFuzzer.cmake
-%{_libdir}/cmake/AwsSIMD.cmake
-%{_libdir}/cmake/AwsSanitizers.cmake
-%{_libdir}/cmake/AwsSharedLibSetup.cmake
-%{_libdir}/cmake/AwsTestHarness.cmake
+%{_libdir}/cmake/*.cmake
+%{_libdir}/cmake/aws-c-common/*.cmake
+%{_libdir}/cmake/aws-c-common/shared/*.cmake
+# %{_libdir}/cmake/aws-c-common/aws-c-common-config.cmake
+# %{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets-noconfig.cmake
+# %{_libdir}/cmake/aws-c-common/shared/aws-c-common-targets.cmake
+# %{_libdir}/cmake/AwsCFlags.cmake
+# %{_libdir}/cmake/AwsCheckHeaders.cmake
+# %{_libdir}/cmake/AwsFeatureTests.cmake
+# %{_libdir}/cmake/AwsFindPackage.cmake
+# %{_libdir}/cmake/AwsLibFuzzer.cmake
+# %{_libdir}/cmake/AwsSIMD.cmake
+# %{_libdir}/cmake/AwsSanitizers.cmake
+# %{_libdir}/cmake/AwsSharedLibSetup.cmake
+# %{_libdir}/cmake/AwsTestHarness.cmake
 
 
 %changelog
