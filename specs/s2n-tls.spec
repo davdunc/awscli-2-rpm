@@ -48,7 +48,11 @@ security as a priority.
 
 
 %files devel
+%dir %{_includedir}/s2n/unstable
+
 %{_includedir}/s2n.h
+%{_includedir}/s2n/unstable/*.h
+
 %{_libdir}/s2n/cmake/modules/Findcrypto.cmake
 %{_libdir}/s2n/cmake/s2n-config.cmake
 %{_libdir}/s2n/cmake/shared/s2n-targets-noconfig.cmake
