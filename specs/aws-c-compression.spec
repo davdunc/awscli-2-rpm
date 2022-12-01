@@ -60,6 +60,7 @@ compression algorithms such as gzip, and huffman encoding/decoding.
 
 %dir %{_libdir}/cmake/aws-c-compression
 %dir %{_libdir}/cmake/aws-c-compression/shared
+%{_libdir}/libaws-c-compression.so
 %{_libdir}/cmake/aws-c-compression/*.cmake
 %{_libdir}/cmake/aws-c-compression/shared/*.cmake
 # %{_libdir}/cmake/aws-c-compression/aws-c-compression-config.cmake
