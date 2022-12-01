@@ -1,6 +1,6 @@
 Name:           aws-checksums
-Version:        0.1.12 
-Release:        5%{?dist}
+Version:        0.1.13
+Release:        1%{?dist}
 Summary:        Checksum package for AWS SDK for C
 
 License:        ASL 2.0
@@ -69,6 +69,9 @@ fallback to efficient SW implementations.
 
 
 %changelog
+* Thu Dec 01 2022 David Duncan <davdunc@amazon.com> - 0.1.13-1
+- bump to 0.1.13 release
+
 * Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.1.12-5
 - Updated for package review
 
