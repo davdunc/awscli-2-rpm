@@ -1,10 +1,10 @@
 Name:           s2n-tls
-Version:        1.3.2
-Release:        3%{?dist}
+Version:        1.3.29
+Release:        1%{?dist}
 Summary:        s2n: an implementation of the TLS/SSL protocols utilities
 
 License:        ASL 2.0
-URL:            https://github.com/davdunc/%{name}
+URL:            https://github.com/aws/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: gcc
@@ -67,6 +67,21 @@ security as a priority.
 
 
 %changelog
+* Thu Dec 01 2022 David Duncan <davdunc@amazon.com> - 1.3.29-1
+- 1.3.29
+- Try to clarify the use of s2n_blob_zeroize_free by @lrstewart in GH#3591
+- Apache renegotiation integration tests by @goatgoose in GH#3580
+- 1.3.27 rust bindings update by @maddeleine in GH#3599
+- Add some redundant null ptr validation for defence in depth by @harrisonkaiser in GH#3596
+- [bindings] Fix client hello callback with config swap by @lrstewart in GH#3600
+- Re-enable saw proofs for TLS handshake with NPN extension disabled by @pennyannn in GH#3594
+- Move CRL timestamp validation into the CRL lookup callback by @goatgoose in GH#3515
+- Fix to handle callback failure by @aditishri18 in GH#3597
+- Adds s2n_connection section to usage guide by @maddeleine in GH#3605
+- Fix very minor DeprecationWarning in integrationv2 by @harrisonkaiser in GH#3609
+- wrapper for wall_clock by @aditishri18 in GH#3611
+- bindings(rust): add lto in release mode by @camshaft in GH#3610
+
 * Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 1.3.2-3
 - Updated for package review
 
