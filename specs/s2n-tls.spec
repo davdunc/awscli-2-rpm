@@ -61,7 +61,8 @@ security as a priority.
 
 %files libs
 %license LICENSE
-%{_libdir}/libs2n.so
+%{_libdir}/libs2n.so.1
+%{_libdir}/libs2n.so.1.0.0
 
 %files
 %license LICENSE
