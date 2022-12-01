@@ -10,9 +10,9 @@ Patch0:         aws-checksums-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
-BuildRequires:  aws-c-common-devel = 0.6.14
+BuildRequires:  aws-c-common-devel = 0.8.5
 
-Requires:       aws-c-common-libs = 0.6.14
+Requires:       aws-c-common-libs = 0.8.5
 
 %description
 Checksum package for AWS SDK for C. Contains
