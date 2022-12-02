@@ -1,7 +1,7 @@
-diff -urN aws-c-mqtt-0.7.8-orig/CMakeLists.txt aws-c-mqtt-0.7.8/CMakeLists.txt
---- aws-c-mqtt-0.7.8-orig/CMakeLists.txt	2021-09-21 23:27:06.000000000 +0000
-+++ aws-c-mqtt-0.7.8/CMakeLists.txt	2022-02-03 21:17:48.579461451 +0000
-@@ -94,7 +94,7 @@
+diff -urN aws-c-mqtt-0.8.0-orig/CMakeLists.txt aws-c-mqtt-0.8.0/CMakeLists.txt
+--- aws-c-mqtt-0.8.0-orig/CMakeLists.txt	2022-12-02 10:04:18.903047454 -0600
++++ aws-c-mqtt-0.8.0/CMakeLists.txt	2022-12-02 10:06:04.680196637 -0600
+@@ -110,7 +110,7 @@
  endif()
  
  install(EXPORT "${PROJECT_NAME}-targets"
@@ -10,7 +10,7 @@ diff -urN aws-c-mqtt-0.7.8-orig/CMakeLists.txt aws-c-mqtt-0.7.8/CMakeLists.txt
          NAMESPACE AWS::
          COMPONENT Development)
  
-@@ -103,7 +103,7 @@
+@@ -119,7 +119,7 @@
          @ONLY)
  
  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
