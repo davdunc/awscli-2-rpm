@@ -15,8 +15,8 @@ BuildRequires:  aws-c-common-devel = 0.6.14
 BuildRequires:  aws-c-cal-devel = 0.5.12
 
 Requires:       s2n-tls-libs
-Requires:       aws-c-common-libs = 0.6.14
-Requires:       aws-c-cal-libs = 0.5.12
+Requires:       aws-c-common-libs = 0.8.5
+Requires:       aws-c-cal-libs = 0.5.20
 
 %description
 IO package for AWS SDK for C. It handles all IO and TLS work
@@ -35,7 +35,7 @@ for application protocols.
 Summary:        IO package for AWS SDK for C
 Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 Requires:       s2n-tls-devel
-Requires:       aws-c-cal-devel = 0.5.12
+Requires:       aws-c-cal-devel = 0.5.20
 
 %description devel
 IO package for AWS SDK for C. It handles all IO and TLS work
