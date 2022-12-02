@@ -25,6 +25,8 @@ for application protocols.
 
 %package libs
 Summary:        IO package for AWS SDK for C
+Requires:       s2n-tls-libs
+Requires:       aws-c-cal-libs = 0.5.20
 
 %description libs
 IO package for AWS SDK for C. It handles all IO and TLS work
