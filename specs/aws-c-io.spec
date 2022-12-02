@@ -11,8 +11,8 @@ Patch0:         aws-c-io-cmake.patch
 BuildRequires:  gcc
 BuildRequires:  cmake
 BuildRequires:  s2n-tls-devel
-BuildRequires:  aws-c-common-devel = 0.6.14
-BuildRequires:  aws-c-cal-devel = 0.5.12
+BuildRequires:  aws-c-common-devel = 0.8.5
+BuildRequires:  aws-c-cal-devel = 0.5.20
 
 Requires:       s2n-tls-libs
 Requires:       aws-c-common-libs = 0.8.5
