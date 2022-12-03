@@ -11,20 +11,20 @@ Patch0:         aws-c-auth-cmake.patch
 BuildRequires:  gcc
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
-BuildRequires:  aws-c-common-devel = 0.6.14
-BuildRequires:  aws-c-sdkutils-devel = 0.1.1
-BuildRequires:  aws-c-cal-devel = 0.5.12
-BuildRequires:  aws-c-io-devel = 0.10.12
-BuildRequires:  aws-c-compression-devel = 0.2.14
-BuildRequires:  aws-c-http-devel = 0.6.8
+BuildRequires:  aws-c-common-devel = 0.8.5
+BuildRequires:  aws-c-sdkutils-devel = 0.1.7
+BuildRequires:  aws-c-cal-devel = 0.5.20
+BuildRequires:  aws-c-io-devel = 0.13.11
+BuildRequires:  aws-c-compression-devel = 0.2.16
+BuildRequires:  aws-c-http-devel = 0.6.27
 
 Requires:       openssl
-Requires:       aws-c-common-libs = 0.6.14
-Requires:       aws-c-sdkutils-libs = 0.1.1
-Requires:       aws-c-cal-libs = 0.5.12
-Requires:       aws-c-io-libs = 0.10.12
-Requires:       aws-c-compression-libs = 0.2.14
-Requires:       aws-c-http-libs = 0.6.8
+Requires:       aws-c-common-libs = 0.8.5
+Requires:       aws-c-sdkutils-libs = 0.1.7
+Requires:       aws-c-cal-libs = 0.5.20
+Requires:       aws-c-io-libs = 0.13.11
+Requires:       aws-c-compression-libs = 0.2.16
+Requires:       aws-c-http-libs = 0.6.27
 
 %description
 C99 library implementation of AWS client-side authentication:
