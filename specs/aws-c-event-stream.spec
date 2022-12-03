@@ -1,6 +1,6 @@
 Name:           aws-c-event-stream
-Version:        0.2.7 
-Release:        5%{?dist}
+Version:        0.2.15
+Release:        1%{?dist}
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 
 License:        ASL 2.0
@@ -67,6 +67,9 @@ C99 implementation of the vnd.amazon.eventstream content-type
 
 
 %changelog
+* Sat Dec 03 2022 David Duncan <davdunc@amazon.com> - 0.2.15-1
+- bump spec to 0.2.15 release
+
 * Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 0.2.7-5
 - Updated for package review
 
