@@ -58,6 +58,8 @@ designed for maximizing throughput on high bandwidth EC2 instances.
 %install
 %cmake_install
 
+%files
+%{_bindir}/s3
 
 %files libs
 %license LICENSE
