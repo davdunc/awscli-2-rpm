@@ -7,7 +7,7 @@ Release:        1%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
-URL:            https://github.com/aws/aws-cli
+URL:            https://github.com/aws/%{srcname}
 Source0:        %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
 Patch0:         awscli-2.patch
 
