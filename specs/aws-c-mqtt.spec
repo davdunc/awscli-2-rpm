@@ -57,6 +57,8 @@ C99 implementation of the MQTT 3.1.1 specification
 
 %files
 %{_bindir}/elastipubsub
+%{_bindir}/elastipubsub5
+%{_bindir}/mqtt5canary
 
 %files libs
 %license LICENSE
@@ -66,8 +68,10 @@ C99 implementation of the MQTT 3.1.1 specification
 %files devel
 %dir %{_includedir}/aws/mqtt
 %dir %{_includedir}/aws/mqtt/private
+%dir %{_includedir}/aws/mqtt/v5
 %{_includedir}/aws/mqtt/*.h
 %{_includedir}/aws/mqtt/private/mqtt_client_test_helper.h
+%{_includedir}/aws/mqtt/v5/*.h
 
 %dir %{_libdir}/cmake/aws-c-mqtt
 %dir %{_libdir}/cmake/aws-c-mqtt/shared
