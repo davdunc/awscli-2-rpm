@@ -10,13 +10,13 @@ Patch0:         aws-c-event-stream-cmake.patch
 
 BuildRequires:  gcc
 BuildRequires:  cmake
-BuildRequires:  aws-c-common-devel = 0.6.14
-BuildRequires:  aws-checksums-devel = 0.1.12
-BuildRequires:  aws-c-io-devel = 0.10.12
+BuildRequires:  aws-c-common-devel = 0.8.5
+BuildRequires:  aws-checksums-devel = 0.1.13
+BuildRequires:  aws-c-io-devel = 0.13.11
 
-Requires:       aws-c-common-libs = 0.6.14
-Requires:       aws-checksums-libs = 0.1.12
-Requires:       aws-c-io-libs = 0.10.12
+Requires:       aws-c-common-libs = 0.8.5
+Requires:       aws-checksums-libs = 0.1.13
+Requires:       aws-c-io-libs = 0.13.11
 
 %description
 C99 implementation of the vnd.amazon.eventstream content-type
