@@ -17,7 +17,7 @@ BuildRequires:  python3dist(jsonschema)
 BuildRequires:  python3dist(mock)
 BuildRequires:  python3dist(pytest)
 BuildRequires:  python3dist(pytest-xdist)
-BuildRequires:  python3dist(Sphinx)
+BuildRequires:  python3dist(sphinx)
 BuildRequires:  python3dist(sphinx-notfound-page)
 
 Recommends:     groff
