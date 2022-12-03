@@ -1,44 +1,60 @@
-diff -urN aws-cli-2.9.4/requirements-base.txt aws-cli-2.9.4-orig/requirements-base.txt
---- aws-cli-2.9.4/requirements-base.txt	2022-12-03 15:10:16.753829702 -0600
-+++ aws-cli-2.9.4-orig/requirements-base.txt	2022-12-03 15:03:21.964592228 -0600
+diff -urN aws-cli-2.9.4-orig/requirements-base.txt aws-cli-2.9.4/requirements-base.txt
+--- aws-cli-2.9.4-orig/requirements-base.txt	2022-12-03 16:26:35.367966263 -0600
++++ aws-cli-2.9.4/requirements-base.txt	2022-12-03 16:32:07.555774958 -0600
 @@ -1,2 +1,2 @@
--wheel>=0.37.1
--flit_core>=3.7.1
-+wheel==0.37.1
-+flit_core==3.7.1
-diff -urN aws-cli-2.9.4/requirements-docs.txt aws-cli-2.9.4-orig/requirements-docs.txt
---- aws-cli-2.9.4/requirements-docs.txt	2022-12-03 15:08:05.766965213 -0600
-+++ aws-cli-2.9.4-orig/requirements-docs.txt	2022-12-03 15:03:21.964592228 -0600
+-wheel==0.37.1
+-flit_core==3.7.1
++wheel>=0.37.1
++flit_core>=3.7.1
+diff -urN aws-cli-2.9.4-orig/requirements-build.txt aws-cli-2.9.4/requirements-build.txt
+--- aws-cli-2.9.4-orig/requirements-build.txt	2022-12-03 16:26:35.367966263 -0600
++++ aws-cli-2.9.4/requirements-build.txt	2022-12-03 16:32:07.556774987 -0600
+@@ -1,4 +1,4 @@
+ # Requirements we need to run our build jobs for the installers.
+ # We create the separation for cases where we're doing installation
+ # from a local dependency directory instead of requirements.txt.
+-PyInstaller==5.3
++PyInstaller>=5.3
+diff -urN aws-cli-2.9.4-orig/requirements-check.txt aws-cli-2.9.4/requirements-check.txt
+--- aws-cli-2.9.4-orig/requirements-check.txt	2022-12-03 16:26:35.367966263 -0600
++++ aws-cli-2.9.4/requirements-check.txt	2022-12-03 16:32:07.556774987 -0600
+@@ -1 +1 @@
+-check-manifest==0.47
++check-manifest>=0.47
+diff -urN aws-cli-2.9.4-orig/requirements-docs.txt aws-cli-2.9.4/requirements-docs.txt
+--- aws-cli-2.9.4-orig/requirements-docs.txt	2022-12-03 16:26:35.367966263 -0600
++++ aws-cli-2.9.4/requirements-docs.txt	2022-12-03 16:32:07.556774987 -0600
 @@ -1,3 +1,3 @@
  Jinja2<3.1.0
--Sphinx>=3.0.2
--sphinx-notfound-page>=0.4
-+Sphinx==3.0.2
-+sphinx-notfound-page==0.4
-diff -urN aws-cli-2.9.4/requirements-test.txt aws-cli-2.9.4-orig/requirements-test.txt
---- aws-cli-2.9.4/requirements-test.txt	2022-12-03 15:04:59.047456451 -0600
-+++ aws-cli-2.9.4-orig/requirements-test.txt	2022-12-03 15:03:21.964592228 -0600
+-Sphinx==3.0.2
+-sphinx-notfound-page==0.4
++Sphinx>=3.0.2
++sphinx-notfound-page>=0.4
+diff -urN aws-cli-2.9.4-orig/requirements-test.txt aws-cli-2.9.4/requirements-test.txt
+--- aws-cli-2.9.4-orig/requirements-test.txt	2022-12-03 16:26:35.367966263 -0600
++++ aws-cli-2.9.4/requirements-test.txt	2022-12-03 16:32:07.557775017 -0600
 @@ -1,6 +1,6 @@
--jsonschema>=4.7.2
--mock>=1.3.0
--pytest>=6.2.5
--coverage>=5.5
--pytest-cov>=2.12.1
--pytest-xdist>=2.4.0
-+jsonschema==4.7.2
-+mock==1.3.0
-+pytest==6.2.5
-+coverage==5.5
-+pytest-cov==2.12.1
-+pytest-xdist==2.4.0
-diff -urN aws-cli-2.9.4/requirements.txt aws-cli-2.9.4-orig/requirements.txt
---- aws-cli-2.9.4/requirements.txt	2022-12-03 15:04:41.398935769 -0600
-+++ aws-cli-2.9.4-orig/requirements.txt	2022-12-03 15:03:21.964592228 -0600
-@@ -1,5 +1,5 @@
+-jsonschema==4.7.2
+-mock==1.3.0
+-pytest==6.2.5
+-coverage==5.5
+-pytest-cov==2.12.1
+-pytest-xdist==2.4.0
++jsonschema>=4.7.2
++mock>=1.3.0
++pytest>=6.2.5
++coverage>=5.5
++pytest-cov>=2.12.1
++pytest-xdist>=2.4.0
+diff -urN aws-cli-2.9.4-orig/requirements.txt aws-cli-2.9.4/requirements.txt
+--- aws-cli-2.9.4-orig/requirements.txt	2022-12-03 16:26:35.368966292 -0600
++++ aws-cli-2.9.4/requirements.txt	2022-12-03 16:32:07.557775017 -0600
+@@ -1,4 +1,4 @@
  -r requirements-base.txt
--tox>=3.24.3
--build>=0.7.0
-+tox==3.24.3
-+build==0.7.0
+-tox==3.24.3
+-build==0.7.0
++tox>=3.24.3
++build>=0.7.0
  -r requirements-test.txt
  -r requirements-build.txt
+ 
