@@ -2,8 +2,8 @@
 %global appname awscli
 
 Name:           %{appname}-2
-Version:        2.4.19
-Release:        2%{?dist}
+Version:        2.9.4
+Release:        1%{?dist}
 Summary:        Universal Command Line Environment for AWS, Version 2
 
 License:        ASL 2.0 and MIT
@@ -70,6 +70,9 @@ PATH="%{buildroot}%{_bindir}:$PATH" PYTHONPATH="${PYTHONPATH:-%{buildroot}%{pyth
 
 
 %changelog
+* Sat Dec 03 2022 David Duncan <davdunc@amazon.com> - 2.9.4-1
+- bump to 2.9.4 release
+
 * Tue Feb 22 2022 David Duncan <davdunc@amazon.com> - 2.4.19-2
 - Updated for package review
 
