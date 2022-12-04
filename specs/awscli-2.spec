@@ -9,7 +9,8 @@ Summary:        Universal Command Line Environment for AWS, Version 2
 License:        ASL 2.0 and MIT
 URL:            https://github.com/aws/%{srcname}
 Source0:        %{url}/archive/%{version}/%{appname}-%{version}.tar.gz
-Patch0:         awscli-2.patch
+Patch0:         awscli-2-0001.patch
+Patch1:         awscli-2-0000.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
