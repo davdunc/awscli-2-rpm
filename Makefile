@@ -25,7 +25,7 @@ python-awscrt:
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
-	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
+	@$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
 	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
 	sudo rpm -ivh \
 	$(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/python3-awscrt-*.$(ARCH)*.rpm
@@ -37,7 +37,7 @@ awscli-2:
 	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
 	spectool --get-files ../SPECS/$@.spec
 	popd
-	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
+	@$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
 	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
 
 $(SRCS):
