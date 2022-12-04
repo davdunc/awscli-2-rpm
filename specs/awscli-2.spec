@@ -19,6 +19,7 @@ BuildRequires:  python3dist(pytest)
 BuildRequires:  python3dist(pytest-xdist)
 BuildRequires:  python3dist(sphinx)
 BuildRequires:  python3dist(sphinx-notfound-page)
+BuildRequires:  python3dist(flit-core)
 
 Recommends:     groff
 Obsoletes:      awscli <= 1
