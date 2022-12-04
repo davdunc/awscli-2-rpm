@@ -12,13 +12,33 @@ rpmbuild := rpmbuild --define "_topdir  $(abspath $(BUILD_DIR)rpmbuild)"
 ARCH := $(shell arch)
 SRCS = aws-c-common aws-c-cal aws-c-compression aws-checksums s2n-tls	\
 aws-c-io aws-c-http aws-c-mqtt aws-c-sdkutils aws-c-auth		\
-aws-c-event-stream aws-c-s3 python-awscrt awscli-2
+aws-c-event-stream aws-c-s3 
 setup:
 	if [[ ! -d $(BUILD_DIR)$(SRPMS_DIR) ]]; then mkdir $(BUILD_DIR)$(SRPMS_DIR); fi
 	@touch $(SRPMS_DIR)/$(shell date "+%Y%m%d").build
 	@mkdir -p -v $(BUILD_DIR)rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 
-build: $(SRCS)
+python-awscrt:
+	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
+	@ls sources/$@* && install sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/
+	@pushd $(BUILD_DIR)rpmbuild/SOURCES
+	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	spectool --get-files ../SPECS/$@.spec
+	popd
+	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
+	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
+	sudo rpm -ivh \
+	$(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/python3-awscrt-*.$(ARCH)*.rpm
+
+awscli-2:
+	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
+	@ls sources/$@* && install sources/$@* $(BUILD_DIR)rpmbuild/SOURCES/
+	@pushd $(BUILD_DIR)rpmbuild/SOURCES
+	if [[ -f $@*.tar.gz ]]; then rm -f $@.*.tar.gz; fi
+	spectool --get-files ../SPECS/$@.spec
+	popd
+	$(rpmbuild)  -ba $(BUILD_DIR)rpmbuild/SPECS/$@.spec
+	sudo rpm -ivh $(BUILD_DIR)rpmbuild/RPMS/$(ARCH)/$@*.rpm
 
 $(SRCS):
 	@install specs/$@.spec $(BUILD_DIR)rpmbuild/SPECS/
@@ -33,12 +53,14 @@ $(SRCS):
 install:
 	install -m 660  $(BUILD_DIR)rpmbuild/SRPMS/*.src.rpm $(SRPMS_DIR)
 
+build: $(SRCS) python-awscrt awscli-2
 
 all: setup build install 
 
 clean:
 	sudo dnf remove -y awscli-2*
 	sudo dnf remove -y python-awscrt*
+	sudo dnf remove -y python3-awscrt*
 	sudo dnf remove -y aws-c-s3*
 	sudo dnf remove -y aws-c-event-stream*
 	sudo dnf remove -y aws-c-auth* 
