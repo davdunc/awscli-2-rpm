@@ -9,7 +9,7 @@
     fedora_release: 35
     centos_release: 8
     region: us-east-1
-    profile: ansible
+    profile: default
     aws_instance_role: Tools-Instance
     subnet: subnet-06390f70b9a87cc70  # us-east-1 subnet from fedpkg instances
     ec2_architecture: arm64

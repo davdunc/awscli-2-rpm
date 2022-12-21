@@ -1,6 +1,6 @@
 ---
 plugin: aws_ec2
-boto_profile: ansible
+boto_profile: default
 regions:
   - us-east-1
 filters:
